@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36623.8 d17.14
+VisualStudioVersion = 17.14.36623.8
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter00", "Chapter00", "{DDB4EF12-CC4E-5E88-E6FC-71A802F4DE97}"
 EndProject
@@ -10,6 +10,14 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sample0415", "Chapter00\Sample0415\sample0415\sample0415.csproj", "{D0F00D84-AD20-C5D6-67FE-85D6CB59A7CE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample0413", "Chapter00\Sample0413\Sample0413\Sample0413.csproj", "{EB11C1AF-3BBE-9D8B-B13B-CEF382F22312}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter01", "Chapter01", "{C07898A4-54CC-47F2-B754-0E943B0B1A54}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter02", "Chapter02", "{55D3F2BA-009A-4526-B651-DA33DC35FB9C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "距離換算プログラム", "距離換算プログラム", "{E35E02E1-5448-45C5-BBD0-031FABC3C5F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DistanceConverter", "Chapter02\距離換算プログラム\DistanceConverter\DistanceConverter.csproj", "{CD1B581B-DE8E-41D8-8490-3DBC065A3F06}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +37,10 @@ Global
 		{EB11C1AF-3BBE-9D8B-B13B-CEF382F22312}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB11C1AF-3BBE-9D8B-B13B-CEF382F22312}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB11C1AF-3BBE-9D8B-B13B-CEF382F22312}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD1B581B-DE8E-41D8-8490-3DBC065A3F06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD1B581B-DE8E-41D8-8490-3DBC065A3F06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD1B581B-DE8E-41D8-8490-3DBC065A3F06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD1B581B-DE8E-41D8-8490-3DBC065A3F06}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -37,6 +49,8 @@ Global
 		{83B0E0B6-F1FC-4F15-B7CC-CD9DA8BC950A} = {DDB4EF12-CC4E-5E88-E6FC-71A802F4DE97}
 		{D0F00D84-AD20-C5D6-67FE-85D6CB59A7CE} = {DDB4EF12-CC4E-5E88-E6FC-71A802F4DE97}
 		{EB11C1AF-3BBE-9D8B-B13B-CEF382F22312} = {DDB4EF12-CC4E-5E88-E6FC-71A802F4DE97}
+		{E35E02E1-5448-45C5-BBD0-031FABC3C5F0} = {55D3F2BA-009A-4526-B651-DA33DC35FB9C}
+		{CD1B581B-DE8E-41D8-8490-3DBC065A3F06} = {E35E02E1-5448-45C5-BBD0-031FABC3C5F0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {903D2D6F-C61E-4974-9946-3F19847E1CDF}
