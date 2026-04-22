@@ -7,12 +7,12 @@ namespace DistanceConverter
     {
         static void Main(string[] args)
         {
-            if (args.Length >= 1 && args[0] == "-tom")//コマンドライン引数 -tom:メートルへの変換 -tof:フィートへの変換
+            if (args.Length >= 1 && args[0] == "-tom")//コマンドライン引数 … -tom:メートルへの変換 -tof:フィートへの変換
             {
                 PrintFeetToMeterList(int.Parse(args[1]), int.Parse(args[2])); //メートルへの変換
 
             }
-            else if(args.Length >= 1 && args[0] == "-tof")
+            else if (args.Length >= 1 && args[0] == "-tof")
             {
                 PrintMeterToFeetList(int.Parse(args[1]), int.Parse(args[2])); //フィートへの変換
 
