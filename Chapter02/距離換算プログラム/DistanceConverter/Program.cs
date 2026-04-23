@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.Metrics;
+﻿using System;
+using System.Diagnostics.Metrics;
 using System.Runtime.CompilerServices;
 
 namespace DistanceConverter
@@ -28,22 +29,22 @@ namespace DistanceConverter
 
         private static void PrintMeterToFeetList(int start, int stop)
         {
-            FeetConverter conveter = new FeetConverter();
+            //FeetConverter conveter = new FeetConverter();
             //メートルからフィートへの対応表を出力
             for (int meter = start; meter <= stop; meter++)
             {
-                double feet = MeterToFeet(meter);
+                double feet = FeetConverter.FromMeter(meter);
                 Console.WriteLine($"{meter}m = {feet:0.0000}ft");
             }
         }
 
         private static void PrintFeetToMeterList(int start, int stop)
         {
-            FeetConverter conveter = new FeetConverter();
+            //FeetConverter conveter = new FeetConverter();
             //フィートからメートルへの対応表を出力
             for (int feet = start; feet <= stop; feet++)
             {
-                double meter = FeetToMeter(feet);
+                double meter = FeetConverter.ToMeter(feet);
                 Console.WriteLine($"{feet}ft = {meter:0.0000}m");
             }
         }
