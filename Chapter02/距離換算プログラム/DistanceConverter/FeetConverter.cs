@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DistanceConverter
 {
-    public static class FeetConverter
+    public static class FeetConverter　
     {
 
         // メートルからフィートを求める
