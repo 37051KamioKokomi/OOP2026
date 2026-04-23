@@ -7,25 +7,15 @@ namespace DistanceConverter
     {
         static void Main(string[] args)
         {
-            if (int.TryParse(args[1], out var height))
+
+            if (args.Length == 3 && int.TryParse(args[1], out int start) && int.TryParse(args[2], out int end))
             {
-                if (int.TryParse(args[2], out var heightt))
+                if (args[0] == "-tom")//コマンドライン引数 … -tom:メートルへの変換 -tof:フィートへの変換 
                 {
-                    if (args.Length  <= 3 && args.Length >= 1 && args[0] == "-tom")//コマンドライン引数 … -tom:メートルへの変換 -tof:フィートへの変換 
-                    {
-                        PrintFeetToMeterList(int.Parse(args[1]), int.Parse(args[2])); //メートルへの変換
-                    }
-                    else if (args.Length >= 1 && args[0] == "-tof")
-                    {
-                        PrintMeterToFeetList(int.Parse(args[1]), int.Parse(args[2])); //フィートへの変換
-                    }
-                    else
-                    {
-                        Console.WriteLine("引数エラー");
-                    }
-                }
-                else
-                {
+                    PrintFeetToMeterList(start,end); //メートルへの変換
+                }else if (args[0] == "-tof"){
+                    PrintMeterToFeetList(start, end); //フィートへの変換
+                }else{
                     Console.WriteLine("引数エラー");
                 }
             }
@@ -33,10 +23,12 @@ namespace DistanceConverter
             {
                 Console.WriteLine("引数エラー");
             }
+
         }
 
         private static void PrintMeterToFeetList(int start, int stop)
         {
+            FeetConverter conveter = new FeetConverter();
             //メートルからフィートへの対応表を出力
             for (int meter = start; meter <= stop; meter++)
             {
@@ -47,6 +39,7 @@ namespace DistanceConverter
 
         private static void PrintFeetToMeterList(int start, int stop)
         {
+            FeetConverter conveter = new FeetConverter();
             //フィートからメートルへの対応表を出力
             for (int feet = start; feet <= stop; feet++)
             {
