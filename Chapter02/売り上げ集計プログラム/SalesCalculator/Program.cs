@@ -2,10 +2,8 @@
     internal class Program {
         static void Main(string[] args) {
 
-            //List<Sale> data = new SalesCounter();
-
             var sales = new SalesCounter(@"data\sales.csv");
-            Dictionary<string, int> amountPerStore = sales.GetPerStoreSales();
+            var amountPerStore = sales.GetPerStoreSales();
             foreach (KeyValuePair<string, int> obj in amountPerStore) {
                 Console.WriteLine($"{obj.Key} {obj.Value}");
             }
