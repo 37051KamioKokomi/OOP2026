@@ -23,7 +23,5 @@
                 Console.WriteLine("変換できません");
             }
         }
-
-        }
     }
 }
