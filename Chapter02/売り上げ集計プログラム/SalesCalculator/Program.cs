@@ -4,7 +4,7 @@
 
             var sales = new SalesCounter(@"data\sales.csv");
             var amountPerStore = sales.GetPerStoreSales();
-            foreach (KeyValuePair<string, int> obj in amountPerStore) {
+            foreach (var obj in amountPerStore) {
                 Console.WriteLine($"{obj.Key} {obj.Value}");
             }
             //SalesCounter.ReadSales(@"data\sales.csv")
