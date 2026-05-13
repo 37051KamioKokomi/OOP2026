@@ -15,8 +15,8 @@ namespace Exercise02 {
         }
 
         //インチからメートルを求める
-        public static double ToMeter(double Inch) {
-            return Inch * ratio;
+        public static double ToMeter(double inch) {
+            return inch * ratio;
         }
 
     }
