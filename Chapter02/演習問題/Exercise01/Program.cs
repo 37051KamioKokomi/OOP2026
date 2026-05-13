@@ -11,14 +11,18 @@ namespace Exercise01 {
             //    new Song("I Will Always Love You", "Whitney Houston", 273),
             //};
             //PrintSongs(songs);
+            //歌のデータを入れるリストオブジェクトを出力
             var songs = new List<Song>(); //コレクション
             //var songs = new Song[5];
             Console.WriteLine("***** 曲の登録 *****");
             //var sc = Console.ReadLine();
+            //何件入力があるかわからないので無限ループ
             while (true) {
                 Console.Write("曲名:");
                 string? title =Console.ReadLine();
-                if(title == "end" || title == "END") {
+                if(title.Equals("end",StringComparison.OrdinalIgnoreCase)) { 
+                    //title == "end" || title == "END"
+                    //p.31を参考にしてもいいがこういう書き方もある。
                     break;
                 }
                 Console.Write("アーティスト名:");
@@ -27,8 +31,9 @@ namespace Exercise01 {
                 //int length = Console.Read();
                 //Console.ReadLine(); //Console.ReadLine()を使う場合はバッファをクリアする
                 int length = int.Parse(Console.ReadLine());
-                Console.WriteLine("");
+                Console.WriteLine();
 
+                //Songインスタンスを生成
                 Song song = new Song(title, artistname, length);
                 songs.Add(song);
 
