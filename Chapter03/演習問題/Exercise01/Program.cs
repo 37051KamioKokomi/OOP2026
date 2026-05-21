@@ -59,7 +59,7 @@ namespace Exercise01 {
             foreach (var q in query) {
                 Console.WriteLine(q);
             }
-
+        }
         }
     }
 }
