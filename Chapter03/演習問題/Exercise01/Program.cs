@@ -8,16 +8,19 @@ namespace Exercise01 {
             Console.WriteLine("--- 3.1.1 ---");
             Exercise1(numbers);
             Console.WriteLine("-----");
+            Console.WriteLine();
 
             // 3.1.2
             Console.WriteLine("--- 3.1.2 ---");
             Exercise2(numbers);
             Console.WriteLine("-----");
+            Console.WriteLine();
 
             // 3.1.3
             Console.WriteLine("--- 3.1.3 ---");
             Exercise3(numbers);
             Console.WriteLine("-----");
+            Console.WriteLine();
 
             // 3.1.4
             Console.WriteLine("--- 3.1.4 ---");
@@ -37,15 +40,26 @@ namespace Exercise01 {
         private static void Exercise2(List<int> numbers) {
             //できたらGitのコメント「問題3.1.2完成」
             numbers.ForEach(n => Console.WriteLine(n / 2.0));
-
+            //foreach(varn in numbers) {
+            //    Console.WriteLine(n / 2.0);
+            //}
         }
 
         private static void Exercise3(List<int> numbers) {
             //できたらGitのコメント「問題3.1.3完成」
+            var query = numbers.Where(n => 50 <= n);
+            foreach (var q in query) {
+                Console.WriteLine(q);
+            }
         }
 
         private static void Exercise4(List<int> numbers) {
             //できたらGitのコメント「問題3.1.4完成」
+            var query = numbers.Select(n => n * 2).ToList();
+            foreach (var q in query) {
+                Console.WriteLine(q);
+            }
+
         }
     }
 }
