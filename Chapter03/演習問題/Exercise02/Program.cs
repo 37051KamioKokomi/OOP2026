@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace Exercise02 {
     internal class Program {
         static void Main(string[] args) {
@@ -25,19 +27,23 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_1(List<string> cities) {
-	        //できたらGitのコメント「問題3.2.1完成」
-            //var name = Console.Lea
+            //できたらGitのコメント「問題3.2.1完成」
+            Console.WriteLine("都市名を入力。空行で終了");
+            var name = Console.ReadLine();
+            int index = cities.FindIndex(s => s.Equals(name));
+            Console.WriteLine(index);
 	        
         }
 
         private static void Exercise2_2(List<string> cities) {
-	        //できたらGitのコメント「問題3.2.2完成」
-	        
+            //できたらGitのコメント「問題3.2.2完成」
+            var cnt = cities.Count(s => s.Contains('o'));
+            Console.WriteLine(cnt);
         }
 
         private static void Exercise2_3(List<string> cities) {
-	        //できたらGitのコメント「問題3.2.3完成」
-	        
+            //できたらGitのコメント「問題3.2.3完成」
+            cities.Where(s => s.Contains('o')).ToList().ForEach(s => Console.WriteLine(s));
         }
 
         private static void Exercise2_4(List<string> cities) {
