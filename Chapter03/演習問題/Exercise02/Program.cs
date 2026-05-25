@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Xml.Linq;
 
 namespace Exercise02 {
     internal class Program {
@@ -43,12 +44,20 @@ namespace Exercise02 {
 
         private static void Exercise2_3(List<string> cities) {
             //できたらGitのコメント「問題3.2.3完成」
-            cities.Where(s => s.Contains('o')).ToList().ForEach(s => Console.WriteLine(s));
+            var selected = cities.Where(s => s.Contains('o')).ToArray();
+            //cities.Where(s => s.Contains('o')).ToList().ForEach(s => Console.WriteLine(s));
+            foreach (var name in selected) {
+                Console.WriteLine(name);
+            }
         }
 
         private static void Exercise2_4(List<string> cities) {
-	        //できたらGitのコメント「問題3.2.4完成」
-
+            //できたらGitのコメント「問題3.2.4完成」
+            var name = cities.Where(s => s.StartsWith('B')).Select(s => s.Length );
+            foreach (var c in cities) {
+                Console.WriteLine(name);
+            }
+          
         }
     }
 }
