@@ -52,10 +52,13 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_4(List<string> cities) {
+            //p.135を参照
             //できたらGitのコメント「問題3.2.4完成」
-            var name = cities.Where(s => s.StartsWith('B')).Select(s => s.Length );
-            foreach (var c in cities) {
-                Console.WriteLine(name);
+            var name = cities.Where(s => s.StartsWith('B'))
+                               .Select(s => new { s, s.Length } );
+
+            foreach (var data in name) {
+                Console.WriteLine(data.s + ":" + data.Length + "文字");
             }
           
         }
