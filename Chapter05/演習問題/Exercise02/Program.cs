@@ -23,15 +23,22 @@ namespace Exercise02 {
         }
 
         private static void Exercise2(YearMonth[] ymCollection) {
-            
+            foreach (var ym in ymCollection) {
+                Console.WriteLine(ym);
+            }
         }
 
         private static void Exercise4(YearMonth[] ymCollection) {
-            
+            //if (YearMonth.Is21Century) {
+            //    return ymCollection;
+            //} else {
+            //    Console.WriteLine("21世紀のデータはありません。");
+            //}
+            //var cent = ymCollection.Find(n => n == 6);
         }
 
         private static void Exercise5(YearMonth[] ymCollection) {
-            
+
         }
     }
 }
