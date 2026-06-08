@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 namespace Exercise01 {
     //5.1.1
-    public class YearMonth {
+    public record YearMonth {
         //プロパティ(p114参照)
         public int Year { get; init; }
         public int Month { get; init; }
 
+        public YearMonth() {
+            
+        }
         //コンストラクタ
         public YearMonth(int year, int month) {
             Year = year;
@@ -23,12 +26,12 @@ namespace Exercise01 {
         public bool Is21Century => 2001 <= Year && Year <= 2100;
 
         //5.1.3
-        public YearMonth AddOneMonth(int year,int month) {
+        public YearMonth AddOneMonth() {
          
             if(Month == 12) {
-                return new YearMonth(year + 1, 1);//Monthが12月
+                return new YearMonth(Year + 1, 1);//Monthが12月
             } else {
-                return new YearMonth(year, month + 1);//Month12月以外
+                return new YearMonth(Year, Month + 1);//Month12月以外
             }
         }
 
