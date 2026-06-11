@@ -60,6 +60,9 @@ namespace Exercise03 {
 
             var str = text.ToLower().Replace(" ","");
 
+            Console.WriteLine();    //改行
+            Console.WriteLine("*辞書(ディクショナリ)を使う方法*");
+
             //辞書(ディクショナリ)を使う方法
             var alphaDicCount = Enumerable.Range('a',26).ToDictionary(num => ((char)num),num => 0);
             //foreach(var alpha in str.Where(s => s.Contains(alphaDicCount)) {
@@ -73,10 +76,25 @@ namespace Exercise03 {
                 Console.WriteLine(word.Key + ":" + word.Value);
             }
 
+            Console.WriteLine();    //改行
+            Console.WriteLine("*配列を用いた集計*");    
+
             //配列を用いた集計
+            var array = Enumerable.Repeat(0, 26).ToArray();
+            foreach (var alph in str) {
+                array[alph - 'a']++;
+            }
+            for (char ch = 'a'; ch <= 'z'; ch ++) {
+                Console.WriteLine($"{ch}:{array[ch - 'a']}");
+            }
+
+            Console.WriteLine();    //改行
+            Console.WriteLine("*'a'から順にカウントして集計*");    
 
             //'a'から順にカウントして集計
-
+            for (char ch = 'a'; ch <= 'z'; ch++) {
+                Console.WriteLine($"{ch}:{str.Count(c => c == ch)}");
+            }
             //var arpha = text.
             //for(){
 
