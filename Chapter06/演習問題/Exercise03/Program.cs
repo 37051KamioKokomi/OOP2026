@@ -58,8 +58,24 @@ namespace Exercise03 {
         //アルファベットの数をカウントして表示する
         private static void Exercise6(string text) {
 
-            
+            var str = text.ToLower().Replace(" ","");
+
             //辞書(ディクショナリ)を使う方法
+            //var alphaDicCount = Enumerable.Range('a',26).ToDictionary(num => ((char)num).ToString(),num => 0);
+            //foreach(var alpha in str.Where(s => s.Contains(alphaDicCount)) {
+
+            //}
+            var dict = new SortedDictionary<char, int>();
+            foreach (var c in str) {
+                if (dict.ContainsKey(c)) {
+                    dict[c]++; //登録されている場合
+                } else {
+                    dict[c] = 1; //未登録の場合
+                }
+            }
+            foreach (var word in dict) {
+                Console.WriteLine(word.Key + ":" + word.Value);
+            }
 
             //配列を用いた集計
 
