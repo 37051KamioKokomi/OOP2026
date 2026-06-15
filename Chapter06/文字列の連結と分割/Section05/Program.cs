@@ -7,7 +7,6 @@ namespace Section05 {
             var words = String.Join(separator,GetWords() );
             Console.Write(words);
             //sb.Append(word);
-
         }
 
         private static IEnumerable<object> GetWords() {

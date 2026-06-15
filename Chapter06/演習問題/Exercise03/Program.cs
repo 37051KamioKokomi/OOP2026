@@ -1,4 +1,5 @@
 ﻿
+using System.Text;
 namespace Exercise03 {
     internal class Program {
         static void Main(string[] args) {
@@ -42,7 +43,15 @@ namespace Exercise03 {
         }
 
         private static void Exercise3(string text) {
-            
+            string[] words = text.Split(' ');
+            var sb = new StringBuilder();
+            Console.Write(words[0]);
+            for (int i = 1; i < words.Length; i++) {
+                sb.Append(" ");
+                sb.Append(words[i]);
+            }
+            //末尾はピリオドで終わる。
+            Console.WriteLine(sb + ".");
         }
 
         private static void Exercise4(string text) {
