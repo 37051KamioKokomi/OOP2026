@@ -42,7 +42,7 @@ namespace Exercise03 {
         }
 
         private static void Exercise3(string text) {
-            //やらなくてよい
+            
         }
 
         private static void Exercise4(string text) {
