@@ -3,6 +3,9 @@
         static void Main(string[] args) {
             var line = "Novelist=谷崎潤一郎;BestWork=春琴抄;Born=1886";
 
+            string[]word = line.Split(';');
+            word = new 
+
 
 
 
