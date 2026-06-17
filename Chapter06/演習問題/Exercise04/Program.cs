@@ -1,12 +1,34 @@
-﻿namespace Exercise04 {
+﻿using System.Diagnostics.Tracing;
+
+namespace Exercise04 {
     internal class Program {
         static void Main(string[] args) {
             var line = "Novelist=谷崎潤一郎;BestWork=春琴抄;Born=1886";
 
-            string[]word = line.Split(';');
-            word = new 
+            string[]words = line.Split(';');
+            
+            foreach (var word in words) {
+                var wordss = word.Split('=');
+                Console.WriteLine(ToJapanese(wordss[0]) + ":" + wordss[1]);
+
+            }
+            //for(int i = 0; i < words.Length; i++) {
+            //    if (word == null) {
+
+            //    }
+            //    var wordd = words[i].Split('=');
+
+            //}
 
 
+            //var lines = 
+            ////ToJapanese();
+            //Console.WriteLine($"");
+            //string[] ans = { "0", "0", "0", "0", "0", "0" };
+            //for(int i = 1; i < ans.Length/2; i += 2) {
+            //    Console.WriteLine(ToJapanese(ans[i]));
+            //    Console.WriteLine(ToJapanese(ans[i + 1]));
+            //}
 
 
 
