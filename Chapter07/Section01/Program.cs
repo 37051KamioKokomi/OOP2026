@@ -22,7 +22,7 @@
             }
 
             //本のページが250ページ以上の本を上位三冊出力
-            //var twoFivePege =();
+            //var twoFivePege =(books.Where(x => 250 <= x.Pages).Take(3));
             //twoFivePege.ForEach(Console.WriteLine(x.Title));
             Console.WriteLine("--- 250ページ以上の本 ---");
             foreach (var book in books.Where(x => x.Pages >= 250).Take(3)) {
