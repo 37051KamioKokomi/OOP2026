@@ -37,27 +37,39 @@ namespace Exercise02 {
         }
 
         private static void Exercise1(List<Book> books) {
-            
+            var wandorfull = books.FirstOrDefault(x => x.Title == "ワンダフル・C#ライフ");
+            Console.WriteLine($"価格:{wandorfull.Price},ページ数:{wandorfull.Pages}");
+            if(wandorfull is not null) {
+
+            }
         }
 
         private static void Exercise2(List<Book> books) {
-            
+            var cBooks = books.Count(b => b.Title.Contains("C#"));
+            Console.WriteLine(cBooks);
         }
 
         private static void Exercise3(List<Book> books) {
-            
+            var cBooksAve = books.Where(b => b.Title.Contains("C#"));
+            Console.WriteLine(cBooksAve.Average(p => p.Pages));
         }
 
         private static void Exercise4(List<Book> books) {
-            
+            var fourPriBook = books.FirstOrDefault(p => 4000 >= p.Price);
+            Console.WriteLine(fourPriBook.Title);
         }
 
         private static void Exercise5(List<Book> books) {
-            
+            var fourBook = books.Where(b => b.Price < 4000);
+            Console.WriteLine(fourBook.Max(b => b.Pages));
+
         }
 
         private static void Exercise6(List<Book> books) {
-            
+            var fourHunPage = books.Where(b => b.Pages >= 400).OrderByDescending(b => b.Price);
+            //foreach(var b in fourHunPage) {
+            //    Console.WriteLine($""b.Title,)
+            //}
         }
 
         private static void Exercise7(List<Book> books) {
