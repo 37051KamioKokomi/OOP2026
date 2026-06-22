@@ -1,7 +1,11 @@
 ﻿namespace Test01_01 {
+    //学生クラス
     public class Student {
-        public string Name { get; init; } = null!; //学生の名前
-        public string Subject { get; init; } = null!; //科目名
-        public int Score { get; init; } = 0; //点数
+        //学生の名前
+        public string Name { get; init; } = string.Empty;
+        //科目名
+        public string Subject { get; init; } = string.Empty;
+        //点数
+        public int Score { get; init; } = 0; 
     }
 }
