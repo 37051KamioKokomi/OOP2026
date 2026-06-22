@@ -60,20 +60,23 @@ namespace Exercise02 {
         }
 
         private static void Exercise5(List<Book> books) {
-            var fourBook = books.Where(b => b.Price < 4000);
-            Console.WriteLine(fourBook.Max(b => b.Pages));
-
+            var fifPri = books.Where(b => b.Price < 4000);
+            Console.WriteLine(fifPri.Max(b => b.Pages));
         }
 
         private static void Exercise6(List<Book> books) {
-            var fourHunPage = books.Where(b => b.Pages >= 400).OrderByDescending(b => b.Price);
-            //foreach(var b in fourHunPage) {
-            //    Console.WriteLine($""b.Title,)
-            //}
+            var priHigh = books.Where(b => b.Pages >= 400).OrderByDescending(b => b.Pages);
+            foreach(var p in priHigh) {
+                Console.WriteLine($"{p.Title},{p.Price}");
+            }
+            
         }
 
         private static void Exercise7(List<Book> books) {
-            
+            var cBook = books.Where(b => b.Title.Contains("C#") && b.Pages <= 500);
+            foreach(var b in cBook) {
+                Console.WriteLine(b.Title);
+            }
         }
     }
 }
