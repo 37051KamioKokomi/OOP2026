@@ -1,4 +1,7 @@
-﻿namespace Section01 {
+﻿
+using System;
+
+namespace Section01 {
     internal class Program {
 
         static private Dictionary<string, string> prefOfficeDict = new Dictionary<string, string>();
@@ -7,6 +10,9 @@
             string? pref, prefCaptalLocation;
             
             Console.WriteLine("県庁所在地の入力【入力終了:Ctrl + 'Z'】");
+
+
+            
 
             while (true) {
 
@@ -21,24 +27,20 @@
                 prefCaptalLocation = Console.ReadLine();
 
                 //③県庁所在地登録処理
-                prefOfficeDict.Add(pref, prefCaptalLocation);
-
+                //prefOfficeDict.Add(pref, prefCaptalLocation);
+                prefOfficeDict[pref] = prefCaptalLocation;
             }
 
-            Console.WriteLine("**** メニュー ****\n1:一覧表示\n2:検索\n3:終了");
-            var line = Console.ReadLine();
-            int num = int.Parse(line);
-            switch (num) {
+            
+            switch (menuDisp()) {
                 case 1:
-                    Console.WriteLine("");
-                    foreach (var p in prefOfficeDict) {
-                        Console.WriteLine($"{p.Key}の県庁所在地は{p.Value}です。");
-                    }
+                    
+                    allDisp();
                     break;
                 case 2:
                     Console.Write("都道府県:");
                     var key = Console.ReadLine();
-                    if (prefOfficeDict.ContainsKey(key)){
+                    if (prefOfficeDict.ContainsKey(key)) {
                         var preff = prefOfficeDict[key];
                         Console.WriteLine($"{key}の県庁所在地は{preff}です。");
                     }
@@ -48,8 +50,22 @@
 
             }
 
-            
-            
+
+
+
+        }
+
+        private static void allDisp() {
+            foreach (var p in prefOfficeDict) {
+                Console.WriteLine($"{p.Key}の県庁所在地は{p.Value}です。");
+            }
+        }
+
+        private static int menuDisp() {
+            Console.WriteLine("**** メニュー ****\n1:一覧表示\n2:検索\n3:終了");
+            var line = Console.ReadLine();
+            int num = int.Parse(line);
+            return (num);
         }
     }
 }
