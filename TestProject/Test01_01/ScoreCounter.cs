@@ -32,10 +32,10 @@
                 //既に科目名が辞書のキーに登録されているか?
                 if (dict.ContainsKey(student.Subject))
                     //登録されている場合
-                    dict[student.Subject] += student.Score; //売り上げを足しこみ
+                    dict[student.Subject] += student.Score; //点数を足しこみ
                 else
                     //未登録の場合
-                    dict[student.Subject] = student.Score; //新規に売り上げを登録
+                    dict[student.Subject] = student.Score; //新規に科目を登録
             }
             return dict;
         }

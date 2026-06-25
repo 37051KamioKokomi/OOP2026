@@ -146,7 +146,7 @@ namespace Test01_02 {
         //          New Delhi : 9文字
         //          Hong Kong : 9文字】
         private static void Exercise09(List<string> cities) {
-        
+            //var citiesCount = cities.Select(c => c,c.Length)
         
         
         }
