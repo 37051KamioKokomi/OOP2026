@@ -116,8 +116,10 @@ namespace Test01_02 {
         //          Paris
         //          Tokyo】
         private static void Exercise07(List<string> cities) {
-            
-
+            var cityAlpha = cities.Order();
+            foreach(var c in cityAlpha) {
+                Console.WriteLine(c);
+            }
         }
 
         //問題８　各都市の文字数
