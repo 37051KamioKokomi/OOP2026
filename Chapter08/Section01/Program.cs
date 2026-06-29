@@ -36,9 +36,10 @@ namespace Section01 {
                 Console.WriteLine();//改行
             }
 
-            while (true) {
+            Boolean endFlag = false; //終了フラグ(メニューの無限ループを抜ける用)
+            while (!endFlag) {
                 switch (menuDisp()) {
-                    case 1:
+                    case 1://一覧出力処理
 
                         allDisp();
                         break;
@@ -46,7 +47,8 @@ namespace Section01 {
                         serchPrefCaptalLocation();
                         break;
                     case 9:
-                        return;
+                        endFlag = true;
+                        break;
                 }
             }
         }
