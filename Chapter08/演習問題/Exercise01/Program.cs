@@ -38,7 +38,20 @@ namespace Exercise01 {
 
         private static void Exercise2(string text) {
             //コミットのコメント(問題8.1.2完成)
+            var sortedDict = new SortedDictionary<char, int>();
+            foreach (var ch in text.ToUpper()) {
+                if ('A' <= ch && ch <= 'Z') {
+                    if (sortedDict.ContainsKey(ch))
+                        //登録されている場合
+                        sortedDict[ch]++;
+                    else
+                        sortedDict[ch] = 1;
+                }
+            }
 
+            foreach (var item in sortedDict) {
+                Console.WriteLine("{0}:{1}", item.Key, item.Value);
+            }
         }
 
     }
