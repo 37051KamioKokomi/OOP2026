@@ -16,35 +16,28 @@ namespace Exercise01 {
 
         private static void Exercise1(string text) {
             //コミットのコメント(問題8.1.1完成)
-            var dict = new Dictionary<char,int>();
+            var dict = new Dictionary<char, int>();
 
-            
-            foreach (var t in text) {
-                //辞書のキーに登録されているか ?
-                if (dict.ContainsKey(t))
-                    //登録されている場合
-                    dict[t] += dict[t]; //売り上げを足しこみ
-                Console.WriteLine(dict[t]);
-                //else
-                //    //未登録の場合
-                //    dict[sale.ShopName] = sale.Amount; //新規に売り上げを登録
+            foreach (var ch in text.ToUpper()) {
+                if ('A' <= ch && ch <= 'Z') {
+                    if (dict.ContainsKey(ch))
+                        //登録されている場合
+                        dict[ch]++;
+                    else
+                        dict[ch] = 1;
+                }
             }
-            //// 要素を追加
-            // public void Add(string abbr, string japanese) => ;
 
-            
-
-            char ch = 'A';
-
-            if ('A' <= ch && ch <= 'Z') {
-
+            foreach (var item in dict.OrderBy(x => x.Key)) {
+                Console.WriteLine("{0}:{1}",item.Key,item.Value);
             }
+            
         }
 
         
 
         private static void Exercise2(string text) {
-            //コミットのコメント(問題8.1.1完成)
+            //コミットのコメント(問題8.1.2完成)
 
         }
 
