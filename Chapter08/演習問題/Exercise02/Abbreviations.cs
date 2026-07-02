@@ -34,14 +34,12 @@ public class Abbreviations {
 
     // 8.2.1
     //Countプロパティを追加
-    public int Count => _dict.Count();
-
+    public int Count => _dict.Count;
+    //public int count { get; set; }
 
     // 8.2.2（最終的に式形式で記述すること）
     public bool Remove(string abb) => _dict.Remove(abb);
       
-
-
         //return true;    //エラー回避のために記述
 
     // Dictionary<TKey, TValue>は、
