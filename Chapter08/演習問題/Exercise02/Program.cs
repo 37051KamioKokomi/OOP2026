@@ -12,15 +12,16 @@
             // 8.2.3 (Countの呼び出し例)
             // 上のAddメソッドで、２つのオブジェクトを追加しているので、読み込んだ単語数+2が、Countの値になる。
             
-            Console.WriteLine(abbrs.Count);
+            Console.WriteLine("2件追加後:" + abbrs.Count);
 
             Console.WriteLine();    //改行
 
             // 8.2.3 (Removeの呼び出し例)
 
-            abbrs.Remove("IOC");
-            Console.WriteLine(abbrs.Count);
-            abbrs.Remove("NPT");
+            Console.WriteLine("件数:" + abbrs.Count);
+            if (abbrs.Remove("NPT")) {
+                Console.WriteLine("削除しました");
+            }
 
             // すでに削除してあるので、falseが返る
             if (!abbrs.Remove("NPT")) {
@@ -32,7 +33,7 @@
             // 新たなGetAllメソッドを追加済みなので、使用してLINQで処理を行う
             var abb = abbrs.GetAll().Where(a => a.Key.Length == 3);
             foreach(var a in abb) {
-                Console.WriteLine($"{a.Key}={a.Value}");
+                Console.WriteLine($"{a.Key}={a.Value}"); //"{0}={1}",Key,Value
             }
 
 
