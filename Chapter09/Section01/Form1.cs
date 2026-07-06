@@ -1,3 +1,5 @@
+using System.Globalization;
+
 namespace Section01 {
     public partial class pbPic : Form {
         public pbPic() {
@@ -5,37 +7,27 @@ namespace Section01 {
         }
 
         private void btGet_Click(object sender, EventArgs e) {
-            DateTime dt1 = dtpDate.Value;
+            DateTime date = dtpDate.Value;
+            //DateTime datee = nudDay.
+            var dateee = date.AddDays(2);
+            tbOut.Text = date.AddDays((double)nudDay.Value).ToString();//$"{date.AddDays(2)}"
 
-            if (DateTime.IsLeapYear(dt1.Year)) {
-                tbOut.Text = "うるう年です";
-            } else {
-                tbOut.Text = "うるう年ではありません";
-            }
 
-            switch (dt1.DayOfWeek) {
-                case DayOfWeek.Saturday:
-                    tbOut.Text = "今日は土曜日です。";
-                    break;
-                case DayOfWeek.Sunday:
-                    tbOut.Text = "今日は日曜日です。";
-                    break;
-                case DayOfWeek.Monday:
-                    tbOut.Text = "今日は月曜日です。";
-                    break;
-                case DayOfWeek.Tuesday:
-                    tbOut.Text = "今日は火曜日です。";
-                    break;
-                case DayOfWeek.Wednesday:
-                    tbOut.Text = "今日は水曜日です。";
-                    break;
-                case DayOfWeek.Thursday:
-                    tbOut.Text = "今日は木曜日です。";
-                    break;
-                case DayOfWeek.Friday:
-                    tbOut.Text = "今日は金曜日です。";
-                    break;
+
+        }
+
+        
+
+        private void btBirthCalc_Click(object sender, EventArgs e) {
+            DateTime birth = dtpBirth.Value; //生まれた日付
+            DateTime today = DateTime.Today; //今日の日付
+            var age = today.Year - birth.Year;
+            if(today < birth.AddYears(age)) {
+                age--;
             }
+            tbOut.Text = $"あなたは{age.ToString()}歳です";
+            var time = (today.Date - birth.Date);
+            tbOut2.Text = $"生まれてから{time.Days.ToString()}日経ちました";
         }
     }
 }
