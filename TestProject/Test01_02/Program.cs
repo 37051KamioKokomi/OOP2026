@@ -63,16 +63,14 @@ namespace Test01_02 {
 
         //問題１　合計値を表示（式形式で記述せよ）
         //　　　　出力結果【618】
-        private static void Exercise01(int[] numbers) {
-            Console.WriteLine(numbers.Sum());
-        }
+        private static void Exercise01(int[] numbers) => Console.WriteLine(numbers.Sum());
+        
 
 
         //問題２　偶数の最大値を表示（式形式で記述せよ）
         //　　　　出力結果【94】
-        private static void Exercise02(int[] numbers) {
-            Console.WriteLine(numbers.Where(n => n % 2 == 0).Max());
-        }
+        private static void Exercise02(int[] numbers) => Console.WriteLine(numbers.Where(n => n % 2 == 0).Max());
+        
 
 
         //問題３　昇順に並べて表示（遅延実行とする）
@@ -133,7 +131,9 @@ namespace Test01_02 {
         //　　　　  Canberra : 8文字
         //　　　　  Hong Kong : 9文字】
         private static void Exercise08(List<string> cities) {
-    
+            foreach(var c in cities) {
+                Console.WriteLine($"{c} : {c.Length}文字");
+            }
         
         }
 
@@ -148,9 +148,12 @@ namespace Test01_02 {
         //          New Delhi : 9文字
         //          Hong Kong : 9文字】
         private static void Exercise09(List<string> cities) {
-            //var citiesCount = cities.Select(c => c,c.Length)
-        
-        
+            var citiesCount = cities.OrderBy(c => c.Length);
+            foreach (var c in citiesCount) {
+                Console.WriteLine($"{c} : {c.Length}文字");
+            }
+
+
         }
 
         //問題１０　６文字の都市名を表示
@@ -158,8 +161,10 @@ namespace Test01_02 {
         //        【London
         //          Berlin】
         private static void Exercise10(List<string> cities) {
-        
-
+            var sixLength = cities.Where(c => c.Length == 6);
+            foreach (var c in sixLength) {
+                Console.WriteLine(c);
+            }
         }
     }
 }
