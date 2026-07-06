@@ -36,7 +36,6 @@
                 Console.WriteLine($"{a.Key}={a.Value}"); //"{0}={1}",Key,Value
             }
 
-
         }
     }
 }
