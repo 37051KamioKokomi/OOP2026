@@ -21,13 +21,24 @@ namespace Section01 {
         private void btBirthCalc_Click(object sender, EventArgs e) {
             DateTime birth = dtpBirth.Value; //¶‚Ü‚ê‚½“ú•t
             DateTime today = DateTime.Today; //¡“ú‚Ì“ú•t
-            var age = today.Year - birth.Year;
-            if(today < birth.AddYears(age)) {
-                age--;
-            }
-            tbOut.Text = $"‚ ‚È‚½‚Í{age.ToString()}Î‚Å‚·";
+
+            //var age = today.Year - birth.Year;
+            //if(today < birth.AddYears(age)) {
+            //    age--;
+            //}
+            var age = GetAge(birth,today);
+            tbOut.Text = $"‚ ‚È‚½‚Í{age}Î‚Å‚·";
+
             var time = (today.Date - birth.Date);
             tbOut2.Text = $"¶‚Ü‚ê‚Ä‚©‚ç{time.Days.ToString()}“úŒo‚¿‚Ü‚µ‚½";
+        }
+
+        static int GetAge(DateTime birthday, DateTime targetDay) {
+            var age = targetDay.Year - birthday.Year;
+            if (targetDay < birthday.AddYears(age)) {
+                age--;
+            }
+            return age;
         }
     }
 }
