@@ -34,6 +34,10 @@
             tbOut2 = new TextBox();
             label3 = new Label();
             label4 = new Label();
+            tbOut3 = new TextBox();
+            label5 = new Label();
+            tbOut4 = new TextBox();
+            label6 = new Label();
             ((System.ComponentModel.ISupportInitialize)nudDay).BeginInit();
             SuspendLayout();
             // 
@@ -59,7 +63,7 @@
             // tbOut
             // 
             tbOut.Font = new Font("Yu Gothic UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 128);
-            tbOut.Location = new Point(122, 420);
+            tbOut.Location = new Point(118, 340);
             tbOut.Name = "tbOut";
             tbOut.Size = new Size(609, 39);
             tbOut.TabIndex = 2;
@@ -67,7 +71,7 @@
             // nudDay
             // 
             nudDay.Font = new Font("Yu Gothic UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 128);
-            nudDay.Location = new Point(272, 184);
+            nudDay.Location = new Point(89, 135);
             nudDay.Name = "nudDay";
             nudDay.Size = new Size(134, 39);
             nudDay.TabIndex = 3;
@@ -76,7 +80,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Yu Gothic UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 128);
-            label1.Location = new Point(412, 186);
+            label1.Location = new Point(229, 137);
             label1.Name = "label1";
             label1.Size = new Size(62, 32);
             label1.TabIndex = 4;
@@ -85,7 +89,7 @@
             // dtpBirth
             // 
             dtpBirth.Font = new Font("Yu Gothic UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 128);
-            dtpBirth.Location = new Point(49, 345);
+            dtpBirth.Location = new Point(45, 265);
             dtpBirth.Name = "dtpBirth";
             dtpBirth.Size = new Size(285, 39);
             dtpBirth.TabIndex = 0;
@@ -93,7 +97,7 @@
             // btBirthCalc
             // 
             btBirthCalc.Font = new Font("Yu Gothic UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 128);
-            btBirthCalc.Location = new Point(364, 342);
+            btBirthCalc.Location = new Point(360, 262);
             btBirthCalc.Name = "btBirthCalc";
             btBirthCalc.Size = new Size(127, 42);
             btBirthCalc.TabIndex = 5;
@@ -104,7 +108,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(49, 327);
+            label2.Location = new Point(45, 238);
             label2.Name = "label2";
             label2.Size = new Size(55, 15);
             label2.TabIndex = 6;
@@ -113,7 +117,7 @@
             // tbOut2
             // 
             tbOut2.Font = new Font("Yu Gothic UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 128);
-            tbOut2.Location = new Point(122, 488);
+            tbOut2.Location = new Point(118, 401);
             tbOut2.Name = "tbOut2";
             tbOut2.Size = new Size(609, 39);
             tbOut2.TabIndex = 2;
@@ -121,32 +125,72 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(49, 505);
+            label3.Location = new Point(45, 425);
             label3.Name = "label3";
-            label3.Size = new Size(52, 15);
+            label3.Size = new Size(55, 15);
             label3.TabIndex = 6;
-            label3.Text = "経過に数";
+            label3.Text = "経過日数";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(49, 437);
+            label4.Location = new Point(45, 357);
             label4.Name = "label4";
             label4.Size = new Size(31, 15);
             label4.TabIndex = 6;
             label4.Text = "年齢";
             // 
+            // tbOut3
+            // 
+            tbOut3.Font = new Font("Yu Gothic UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 128);
+            tbOut3.Location = new Point(118, 460);
+            tbOut3.Multiline = true;
+            tbOut3.Name = "tbOut3";
+            tbOut3.Size = new Size(609, 44);
+            tbOut3.TabIndex = 2;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(76, 489);
+            label5.Name = "label5";
+            label5.Size = new Size(24, 15);
+            label5.TabIndex = 6;
+            label5.Text = "メモ";
+            // 
+            // tbOut4
+            // 
+            tbOut4.Font = new Font("Yu Gothic UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 128);
+            tbOut4.Location = new Point(118, 522);
+            tbOut4.Multiline = true;
+            tbOut4.Name = "tbOut4";
+            tbOut4.Size = new Size(609, 47);
+            tbOut4.TabIndex = 2;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(16, 539);
+            label6.Name = "label6";
+            label6.Size = new Size(96, 15);
+            label6.TabIndex = 6;
+            label6.Text = "誕生日までの日数";
+            // 
             // pbPic
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1033, 634);
+            ClientSize = new Size(837, 598);
             Controls.Add(label4);
+            Controls.Add(label6);
+            Controls.Add(label5);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(btBirthCalc);
             Controls.Add(label1);
             Controls.Add(nudDay);
+            Controls.Add(tbOut4);
+            Controls.Add(tbOut3);
             Controls.Add(tbOut2);
             Controls.Add(tbOut);
             Controls.Add(btGet);
@@ -172,5 +216,9 @@
         private TextBox tbOut2;
         private Label label3;
         private Label label4;
+        private TextBox tbOut3;
+        private Label label5;
+        private TextBox tbOut4;
+        private Label label6;
     }
 }

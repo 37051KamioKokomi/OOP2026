@@ -16,29 +16,67 @@ namespace Section01 {
 
         }
 
-        
+
 
         private void btBirthCalc_Click(object sender, EventArgs e) {
-            DateTime birth = dtpBirth.Value; //生まれた日付
+            DateTime birth = dtpBirth.Value.Date; //生まれた日付
             DateTime today = DateTime.Today; //今日の日付
 
             //var age = today.Year - birth.Year;
             //if(today < birth.AddYears(age)) {
             //    age--;
             //}
-            var age = GetAge(birth,today);
+            var age = GetAge(birth, today);
             tbOut.Text = $"あなたは{age}歳です";
 
-            var time = (today.Date - birth.Date);
+            TimeSpan time = (today.Date - birth.Date);
             tbOut2.Text = $"生まれてから{time.Days.ToString()}日経ちました";
-        }
 
+            var ntf = NthWeek(birth);
+            var culture = new CultureInfo("ja-JP");
+            culture.DateTimeFormat.Calendar = new JapaneseCalendar();
+            var dayOfWeek = culture.DateTimeFormat.GetDayName(birth.DayOfWeek);
+            tbOut3.Text = $"生まれた{birth.Month}月{birth.Day}日は第{ntf}週の{dayOfWeek}です";
+
+            //誕生日は今年か来年か、今日が誕生日なら誕生日は今日ですと表示
+            //今年の誕生日を作成する
+            DateTime thisYearBirthday = new DateTime(today.Year, birth.Month, birth.Day);
+            //すでに誕生日が過ぎたか？
+            var next = NextBirth(birth, today);
+            if (next == 0) {
+                tbOut4.Text = $"誕生日は今日です";
+            } else {
+                tbOut4.Text = $"次の誕生日まで{next}日です";
+            }
+        }
+        //年齢を求めるメソッド
         static int GetAge(DateTime birthday, DateTime targetDay) {
             var age = targetDay.Year - birthday.Year;
             if (targetDay < birthday.AddYears(age)) {
                 age--;
             }
             return age;
+        }
+
+        //指定した日が第何週か求める
+        static int NthWeek(DateTime date) {
+            var firstDay = new DateTime(date.Year, date.Month, 1);
+            var firstDayOfWeek = (int)(firstDay.DayOfWeek);
+            return (date.Day + firstDayOfWeek - 1) / 7 + 1;
+        }
+
+       
+        //次の誕生日までの日数を求めて表示
+        static int NextBirth(DateTime birth, DateTime today) {
+            birth.Year = today.Year;
+            if (birth.Month == today.Month && ) {
+                return 0;
+            }else if(birth.Date<today.Date) {
+                return birth.Day + ( - today.Day);
+            } else {
+                return birth.Day - today.Day;
+            }
+            
         }
     }
 }
