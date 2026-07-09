@@ -39,16 +39,25 @@ namespace Section01 {
             tbOut3.Text = $"生まれた{birth.Month}月{birth.Day}日は第{ntf}週の{dayOfWeek}です";
 
             //誕生日は今年か来年か、今日が誕生日なら誕生日は今日ですと表示
+
             //今年の誕生日を作成する
             DateTime thisYearBirthday = new DateTime(today.Year, birth.Month, birth.Day);
             //すでに誕生日が過ぎたか？
-            var next = NextBirth(birth, today);
-            if (next == 0) {
+            if (thisYearBirthday < today) {
+                //来年の誕生日を作成する
+                thisYearBirthday = thisYearBirthday.AddYears(1);
+            }
+
+            var span = thisYearBirthday - today;
+
+            //var next = NextBirth(birth, today);
+            if (span.Days == 0) {
                 tbOut4.Text = $"誕生日は今日です";
             } else {
-                tbOut4.Text = $"次の誕生日まで{next}日です";
+                tbOut4.Text = $"次の誕生日まであと{span.Days}日です";
             }
         }
+
         //年齢を求めるメソッド
         static int GetAge(DateTime birthday, DateTime targetDay) {
             var age = targetDay.Year - birthday.Year;
@@ -65,18 +74,17 @@ namespace Section01 {
             return (date.Day + firstDayOfWeek - 1) / 7 + 1;
         }
 
-       
-        //次の誕生日までの日数を求めて表示
-        static int NextBirth(DateTime birth, DateTime today) {
-            birth.Year = today.Year;
-            if (birth.Month == today.Month && ) {
-                return 0;
-            }else if(birth.Date<today.Date) {
-                return birth.Day + ( - today.Day);
-            } else {
-                return birth.Day - today.Day;
-            }
+        ////次の誕生日までの日数を求めて表示
+        //static int NextBirth(DateTime birth, DateTime today) {
+        //    birth.Year = today.Year;
+        //    if (birth.Month == today.Month && ) {
+        //        return 0;
+        //    }else if(birth.Date<today.Date) {
+        //        return birth.Day + ( - today.Day);
+        //    } else {
+        //        return birth.Day - today.Day;
+        //    }
             
-        }
+        //}
     }
 }
