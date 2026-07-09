@@ -23,9 +23,14 @@
         ///  the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            components = new System.ComponentModel.Container();
             btStart = new Button();
             btStop = new Button();
             lbTimeDisp = new Label();
+            timer1 = new System.Windows.Forms.Timer(components);
+            btReset = new Button();
+            listBox1 = new ListBox();
+            button1 = new Button();
             SuspendLayout();
             // 
             // btStart
@@ -57,12 +62,49 @@
             lbTimeDisp.Size = new Size(343, 40);
             lbTimeDisp.TabIndex = 1;
             // 
+            // timer1
+            // 
+            timer1.Interval = 2;
+            timer1.Tick += timer1_Tick;
+            // 
+            // btReset
+            // 
+            btReset.Location = new Point(61, 157);
+            btReset.Name = "btReset";
+            btReset.Size = new Size(119, 35);
+            btReset.TabIndex = 2;
+            btReset.Text = "リセット";
+            btReset.UseVisualStyleBackColor = true;
+            btReset.Click += btReset_Click;
+            // 
+            // listBox1
+            // 
+            listBox1.FormattingEnabled = true;
+            listBox1.ItemHeight = 15;
+            listBox1.Location = new Point(433, 40);
+            listBox1.Name = "listBox1";
+            listBox1.Size = new Size(120, 139);
+            listBox1.TabIndex = 3;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(243, 153);
+            button1.Name = "button1";
+            button1.Size = new Size(113, 42);
+            button1.TabIndex = 4;
+            button1.Text = "ラップタイム";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(192, 255, 255);
-            ClientSize = new Size(437, 163);
+            ClientSize = new Size(594, 217);
+            Controls.Add(button1);
+            Controls.Add(listBox1);
+            Controls.Add(btReset);
             Controls.Add(lbTimeDisp);
             Controls.Add(btStop);
             Controls.Add(btStart);
@@ -76,5 +118,9 @@
         private Button btStart;
         private Button btStop;
         private Label lbTimeDisp;
+        private System.Windows.Forms.Timer timer1;
+        private Button btReset;
+        private ListBox listBox1;
+        private Button button1;
     }
 }

@@ -9,6 +9,14 @@ namespace Exercise03 {
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new Form1());
+
+            //var tw = new TimeWatch();
+            //tw.Start();
+            //TimeSpan duration = tw.Stop();
+            //Console.WriteLine("ˆ—ŠÔ‚Í{0}ƒ~ƒŠ•b‚Å‚µ‚½", duration.TotalMicroseconds);
+
         }
+
+       
     }
 }
