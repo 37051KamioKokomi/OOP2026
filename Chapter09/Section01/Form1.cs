@@ -16,8 +16,6 @@ namespace Section01 {
 
         }
 
-
-
         private void btBirthCalc_Click(object sender, EventArgs e) {
             DateTime birth = dtpBirth.Value.Date; //生まれた日付
             DateTime today = DateTime.Today; //今日の日付
@@ -42,6 +40,7 @@ namespace Section01 {
 
             //今年の誕生日を作成する
             DateTime thisYearBirthday = new DateTime(today.Year, birth.Month, birth.Day);
+
             //すでに誕生日が過ぎたか？
             if (thisYearBirthday < today) {
                 //来年の誕生日を作成する
