@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using System.Drawing.Text;
 using static CarReportSystem.CarReport;
 
 namespace CarReportSystem {
@@ -86,7 +87,7 @@ namespace CarReportSystem {
         }
 
         private void dgvRecords_Click(object sender, EventArgs e) {
-//if ((dgvRecords.CurrentRow is null) || (!dgvRecords.CurrentRow.Selected)) return;
+            //if ((dgvRecords.CurrentRow is null) || (!dgvRecords.CurrentRow.Selected)) return;
 
             //dtpDate.Value = (DateTime)dgvRecords.CurrentRow.Cells["Date"].Value;
             //cbAuthor.Text = (string)dgvRecords.CurrentRow.Cells["Author"].Value;
@@ -96,7 +97,7 @@ namespace CarReportSystem {
             //pbPicture.Image = (Image)dgvRecords.CurrentRow.Cells["Picture"].Value;
 
             //ImputItemsUpdate();
-            
+
         }
 
         private void SetRadioButtonMaker(MakerGroup targetMaker) {
@@ -192,6 +193,32 @@ namespace CarReportSystem {
             pbPicture.Image = (Image)dgvRecords.CurrentRow.Cells["Picture"].Value;
 
             ImputItemsUpdate();
+        }
+
+        private void èIóπToolStripMenuItem_Click(object sender, EventArgs e) {
+            Application.Exit();
+        }
+
+        private void êFê›íËToolStripMenuItem_Click(object sender, EventArgs e) {
+
+            var previewPanel = new Panel() {
+                BorderStyle = BorderStyle.FixedSingle,
+                BackColor = Color.White,
+                Location = new Point(20, 70),
+                Size = new Size(360, 80)
+
+            };
+
+
+            cbColor.AllowFullOpen = true;
+            cbColor.FullOpen = true;
+            cbColor.AnyColor = true;
+            cbColor.SolidColorOnly = true;
+
+            var result = cbColor.ShowDialog(this);
+            if (result == DialogResult.OK) {
+                BackColor = cbColor.Color;
+            }
         }
     }
 }
