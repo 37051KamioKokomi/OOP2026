@@ -227,17 +227,21 @@
             // 
             // dgvRecords
             // 
+            dgvRecords.AllowUserToAddRows = false;
             dgvRecords.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvRecords.Location = new Point(116, 378);
             dgvRecords.MultiSelect = false;
             dgvRecords.Name = "dgvRecords";
+            dgvRecords.ReadOnly = true;
+            dgvRecords.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvRecords.Size = new Size(736, 181);
             dgvRecords.TabIndex = 4;
+            dgvRecords.SelectionChanged += dgvRecords_SelectionChanged;
             dgvRecords.Click += dgvRecords_Click;
             // 
             // tbReport
             // 
-            tbReport.Location = new Point(116, 270);
+            tbReport.Location = new Point(131, 270);
             tbReport.Multiline = true;
             tbReport.Name = "tbReport";
             tbReport.Size = new Size(371, 82);
@@ -297,12 +301,13 @@
             btDeletePicture.TabIndex = 6;
             btDeletePicture.Text = "削除";
             btDeletePicture.UseVisualStyleBackColor = false;
+            btDeletePicture.Click += btDeletePicture_Click;
             // 
             // pbPicture
             // 
             pbPicture.BackColor = SystemColors.ActiveBorder;
             pbPicture.BorderStyle = BorderStyle.FixedSingle;
-            pbPicture.Location = new Point(576, 98);
+            pbPicture.Location = new Point(571, 98);
             pbPicture.Name = "pbPicture";
             pbPicture.Size = new Size(276, 227);
             pbPicture.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -331,6 +336,7 @@
             btModifyRecord.TabIndex = 6;
             btModifyRecord.Text = "修正";
             btModifyRecord.UseVisualStyleBackColor = false;
+            btModifyRecord.Click += btModifyRecord_Click;
             // 
             // btDeleteRecord
             // 
@@ -342,6 +348,7 @@
             btDeleteRecord.TabIndex = 6;
             btDeleteRecord.Text = "削除";
             btDeleteRecord.UseVisualStyleBackColor = false;
+            btDeleteRecord.Click += btDeleteRecord_Click;
             // 
             // menuStrip1
             // 
@@ -418,6 +425,7 @@
             statusStrip1.Location = new Point(0, 549);
             statusStrip1.Name = "statusStrip1";
             statusStrip1.Size = new Size(900, 22);
+            statusStrip1.SizingGrip = false;
             statusStrip1.TabIndex = 9;
             statusStrip1.Text = "statusStrip1";
             // 
@@ -459,9 +467,12 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(menuStrip1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             MainMenuStrip = menuStrip1;
+            MaximizeBox = false;
             Name = "Form1";
             Text = "試乗レポート管理システム";
+            Load += Form1_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvRecords).EndInit();
