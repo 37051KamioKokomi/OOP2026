@@ -1,5 +1,7 @@
 using System.ComponentModel;
 using System.Drawing.Text;
+using System.Xml;
+using System.Xml.Serialization;
 using static CarReportSystem.CarReport;
 
 namespace CarReportSystem {
@@ -8,6 +10,9 @@ namespace CarReportSystem {
 
         //カーレポート管理用リスト
         BindingList<CarReport> listCarReports = new BindingList<CarReport>();
+
+        //設定クラスのオブジェクトを設定
+        Settings settings = new Settings();
 
         public Form1() {
 
@@ -88,7 +93,7 @@ namespace CarReportSystem {
             dgvRecords.ClearSelection();
         }
 
-       
+
 
         private void SetRadioButtonMaker(MakerGroup targetMaker) {
             //targetMaker = getRadioButtonMaker();
@@ -162,7 +167,7 @@ namespace CarReportSystem {
 
         private void btModifyRecord_Click(object sender, EventArgs e) {
 
-            if(dgvRecords.SelectedRows.Count == 0) {
+            if (dgvRecords.SelectedRows.Count == 0) {
                 tsslbMessage.Text = "修正するレポートを選択してください";
                 return;
             }
@@ -225,6 +230,14 @@ namespace CarReportSystem {
             var result = cbColor.ShowDialog(this);
             if (result == DialogResult.OK) {
                 BackColor = cbColor.Color;
+            }
+        }
+
+        //フォームが閉じたら呼ばれるイベントハンドラ
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e) {
+            using (var writer = XmlWriter.Create("setting.xml")) {
+                var serializer = new XmlSerializer(settings.GetType());
+                serializer.Serialize(writer, settings);
             }
         }
     }
