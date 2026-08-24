@@ -1,3 +1,5 @@
+using System.Drawing;
+
 namespace CarReportSystem {
     internal static class Program {
         /// <summary>
@@ -9,6 +11,8 @@ namespace CarReportSystem {
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new Form1());
+
+           
         }
     }
 }

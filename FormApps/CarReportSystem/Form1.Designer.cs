@@ -63,6 +63,8 @@
             tsslbMessage = new ToolStripStatusLabel();
             ofdPicFileOpen = new OpenFileDialog();
             cbColor = new ColorDialog();
+            sfdReportFileSave = new SaveFileDialog();
+            ofdOpenFileDialog = new OpenFileDialog();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvRecords).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbPicture).BeginInit();
@@ -230,7 +232,7 @@
             // 
             dgvRecords.AllowUserToAddRows = false;
             dgvRecords.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvRecords.Location = new Point(116, 378);
+            dgvRecords.Location = new Point(116, 369);
             dgvRecords.MultiSelect = false;
             dgvRecords.Name = "dgvRecords";
             dgvRecords.ReadOnly = true;
@@ -369,19 +371,20 @@
             // 開くToolStripMenuItem
             // 
             開くToolStripMenuItem.Name = "開くToolStripMenuItem";
-            開くToolStripMenuItem.Size = new Size(155, 22);
+            開くToolStripMenuItem.Size = new Size(180, 22);
             開くToolStripMenuItem.Text = "開く…";
             // 
             // 保存ToolStripMenuItem
             // 
             保存ToolStripMenuItem.Name = "保存ToolStripMenuItem";
-            保存ToolStripMenuItem.Size = new Size(155, 22);
+            保存ToolStripMenuItem.Size = new Size(180, 22);
             保存ToolStripMenuItem.Text = "保存…";
+            保存ToolStripMenuItem.Click += 保存ToolStripMenuItem_Click;
             // 
             // 色設定ToolStripMenuItem
             // 
             色設定ToolStripMenuItem.Name = "色設定ToolStripMenuItem";
-            色設定ToolStripMenuItem.Size = new Size(155, 22);
+            色設定ToolStripMenuItem.Size = new Size(180, 22);
             色設定ToolStripMenuItem.Text = "色設定…";
             色設定ToolStripMenuItem.Click += 色設定ToolStripMenuItem_Click;
             // 
@@ -389,14 +392,14 @@
             // 
             終了ToolStripMenuItem.Name = "終了ToolStripMenuItem";
             終了ToolStripMenuItem.ShortcutKeys = Keys.Alt | Keys.F4;
-            終了ToolStripMenuItem.Size = new Size(155, 22);
+            終了ToolStripMenuItem.Size = new Size(180, 22);
             終了ToolStripMenuItem.Text = "終了(&X)";
             終了ToolStripMenuItem.Click += 終了ToolStripMenuItem_Click;
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(152, 6);
+            toolStripSeparator1.Size = new Size(177, 6);
             // 
             // ヘルプHToolStripMenuItem
             // 
@@ -424,7 +427,7 @@
             // statusStrip1
             // 
             statusStrip1.Items.AddRange(new ToolStripItem[] { tsslbMessage });
-            statusStrip1.Location = new Point(0, 549);
+            statusStrip1.Location = new Point(0, 558);
             statusStrip1.Name = "statusStrip1";
             statusStrip1.Size = new Size(900, 22);
             statusStrip1.SizingGrip = false;
@@ -441,11 +444,15 @@
             // 
             ofdPicFileOpen.FileName = "openFileDialog1";
             // 
+            // ofdOpenFileDialog
+            // 
+            ofdOpenFileDialog.FileName = "openFileDialog1";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(900, 571);
+            ClientSize = new Size(900, 580);
             Controls.Add(statusStrip1);
             Controls.Add(pbPicture);
             Controls.Add(btDeletePicture);
@@ -530,5 +537,7 @@
         private ToolStripStatusLabel tsslbMessage;
         private OpenFileDialog ofdPicFileOpen;
         private ColorDialog cbColor;
+        private SaveFileDialog sfdReportFileSave;
+        private OpenFileDialog ofdOpenFileDialog;
     }
 }
