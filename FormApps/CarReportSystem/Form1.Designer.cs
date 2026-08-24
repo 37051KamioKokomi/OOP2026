@@ -64,7 +64,7 @@
             ofdPicFileOpen = new OpenFileDialog();
             cbColor = new ColorDialog();
             sfdReportFileSave = new SaveFileDialog();
-            ofdOpenFileDialog = new OpenFileDialog();
+            ofdReportFileOpen = new OpenFileDialog();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvRecords).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbPicture).BeginInit();
@@ -98,6 +98,7 @@
             cbAuthor.Name = "cbAuthor";
             cbAuthor.Size = new Size(218, 38);
             cbAuthor.TabIndex = 2;
+            cbAuthor.SelectedIndexChanged += cbAuthor_SelectedIndexChanged;
             // 
             // label2
             // 
@@ -373,6 +374,7 @@
             開くToolStripMenuItem.Name = "開くToolStripMenuItem";
             開くToolStripMenuItem.Size = new Size(180, 22);
             開くToolStripMenuItem.Text = "開く…";
+            開くToolStripMenuItem.Click += 開くToolStripMenuItem_Click;
             // 
             // 保存ToolStripMenuItem
             // 
@@ -444,9 +446,9 @@
             // 
             ofdPicFileOpen.FileName = "openFileDialog1";
             // 
-            // ofdOpenFileDialog
+            // ofdReportFileOpen
             // 
-            ofdOpenFileDialog.FileName = "openFileDialog1";
+            ofdReportFileOpen.FileName = "openFileDialog1";
             // 
             // Form1
             // 
@@ -538,6 +540,6 @@
         private OpenFileDialog ofdPicFileOpen;
         private ColorDialog cbColor;
         private SaveFileDialog sfdReportFileSave;
-        private OpenFileDialog ofdOpenFileDialog;
+        private OpenFileDialog ofdReportFileOpen;
     }
 }

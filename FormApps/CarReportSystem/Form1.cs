@@ -245,7 +245,7 @@ namespace CarReportSystem {
                     //p286以降を参考にする(ファイル名 : setting.xml)
                     using (var reader = XmlReader.Create("setting.xml")) {
                         var serializer = new XmlSerializer(typeof(Settings));
-                        settings= serializer.Deserialize(reader) as Settings;
+                        settings = serializer.Deserialize(reader) as Settings;
                         //背景色を設定
                         BackColor = Color.FromArgb(settings.MainFormBackColor);
                     }
@@ -270,6 +270,10 @@ namespace CarReportSystem {
             reportSaveFile();
         }
 
+        private void 開くToolStripMenuItem_Click(object sender, EventArgs e) {
+            reportOpenFile();
+        }
+
         //ファイルセーブ処理
         private void reportSaveFile() {
             if (sfdReportFileSave.ShowDialog() == DialogResult.OK) {
@@ -278,18 +282,57 @@ namespace CarReportSystem {
 #pragma warning disable SYSLIB0011
                     var bf = new BinaryFormatter();
 #pragma warning restore SYSLIB0011
+                    using (FileStream fs = File.Open(sfdReportFileSave.FileName, FileMode.Create)) {
+                        bf.Serialize(fs, listCarReports);
+                    }
                 }
                 catch (Exception ex) {
                     tsslbMessage.Text = "ファイル書き出しエラー";
                     MessageBox.Show(ex.Message);
                 }
-                
+
             }
         }
 
         //ファイルオープン処理
         private void reportOpenFile() {
+            if(ofdReportFileOpen.ShowDialog() == DialogResult.OK) {
+                try {
+                    //逆シリアル化でバイナリ形式を取り込む
+#pragma warning disable SYSLIB0011
+                    var bf = new BinaryFormatter();
+#pragma warning restore SYSLIB0011
+                    using (FileStream fs = File.Open(
+                        ofdReportFileOpen.FileName,//ファイル名
+                        FileMode.Open,//ファイルモード
+                        FileAccess.Read//アクセス
+                        )) {
+
+                        listCarReports = (BindingList<CarReport>)bf.Deserialize(fs);
+                        dgvRecords.DataSource = listCarReports;
+                    }
+                    //コンボボックスの履歴をすべて消す
+                    cbAuthor.Items.Clear();
+                    cbCarName.Items.Clear();
+
+                    //コンボボックスの履歴を再登録
+                    foreach (var report in listCarReports) {
+                        setCbAuther(report.Author);
+                        setCbCarName(report.CarName);
+                    }
+                    ;
+                }
+                catch (Exception ex) {
+                    tsslbMessage.Text = "ファイル読み出しエラー";
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        private void cbAuthor_SelectedIndexChanged(object sender, EventArgs e) {
 
         }
+
+        
     }
 }
