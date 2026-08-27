@@ -98,7 +98,7 @@
             cbAuthor.Name = "cbAuthor";
             cbAuthor.Size = new Size(218, 38);
             cbAuthor.TabIndex = 2;
-            cbAuthor.SelectedIndexChanged += cbAuthor_SelectedIndexChanged;
+            
             // 
             // label2
             // 

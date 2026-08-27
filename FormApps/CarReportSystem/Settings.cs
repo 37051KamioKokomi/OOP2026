@@ -28,7 +28,7 @@ namespace CarReportSystem {
             }
 
             using var reader = XmlReader.Create("setting.xml");
-            var serializer = new XmlSerializer(typeof(Settings));
+            var serializer = new XmlSerializer(typeof(SettingsData));
 
             if (serializer.Deserialize(reader) is SettingsData data) {
                 MainFormBackColor = data.MainFormBackColor;
