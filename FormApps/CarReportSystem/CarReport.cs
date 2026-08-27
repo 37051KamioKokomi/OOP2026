@@ -11,7 +11,7 @@ namespace CarReportSystem {
         public enum MakerGroup {
             なし,
             トヨタ,
-            ニッサン,
+            日産,
             ホンダ,
             スバル,
             輸入車,
