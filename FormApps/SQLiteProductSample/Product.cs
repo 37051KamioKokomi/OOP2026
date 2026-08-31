@@ -6,7 +6,7 @@ public class Product {
 
     //¤•iID(©“®Ì”Ô)
     [DisplayName("ID")]
-    public int id { get; set; }
+    public int Id { get; set; }
 
     //¤•i–¼
     [DisplayName("¤•i–¼")]
