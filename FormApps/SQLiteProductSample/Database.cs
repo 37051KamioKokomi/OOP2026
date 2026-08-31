@@ -11,7 +11,7 @@ public static class Database {
 
     //SQLiteへ接続するための文字列
     private static readonly string ConnectionString =
-        $"Data Sorce={DatabasesPath}";
+        $"Data Source={DatabasesPath}";
 
     //DBファイルの保存場所を外部から確認するための読み取り専用プロパティ
     public static string FilePath => DatabasesPath;
