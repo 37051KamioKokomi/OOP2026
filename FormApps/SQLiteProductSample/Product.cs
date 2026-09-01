@@ -10,9 +10,9 @@ public class Product {
 
     //¤•i–¼
     [DisplayName("¤•i–¼")]
+    public string Name { get; set; } = string.Empty;
 
     //¤•i‰¿Ši
-    public string Name { get; set; } = string.Empty;
     [DisplayName("‰¿Ši")]
-    public int price { get; set; }
+    public int Price { get; set; }
 }
