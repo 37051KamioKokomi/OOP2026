@@ -34,7 +34,7 @@ public class ProductRepository
             products.Add(new Product { 
                 Id = reader.GetInt32(0),    //0—ñ–Ú:Id
                 Name = reader.GetString(1), //1—ñ–Ú:Name
-                price = reader.GetInt32(2)  //2—ñ–Ú:price
+                Price = reader.GetInt32(2)  //2—ñ–Ú:price
 
             });
         }
@@ -85,7 +85,7 @@ public class ProductRepository
             """
             UPDATE Products
             SET Name = $name,
-                Price = $price,
+                Price = $price
             WHERE Id = $id;
             """;
 

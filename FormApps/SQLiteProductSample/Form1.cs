@@ -93,7 +93,9 @@ public partial class Form1 : Form {
     }
 
     private void btClear_Click(object sender, EventArgs e) {
-
+        ClearInput();
+        dgvProducts.ClearSelection();
+        tsslMessage.Text = "入力欄をクリアしました。";
     }
 
     private void dgvProducts_SelectionChanged(object sender, EventArgs e) {
@@ -102,7 +104,7 @@ public partial class Form1 : Form {
 
         // 選択した商品のデータを入力欄へ表示する
         tbName.Text = product.Name;
-        tbPrice.Text = product.price.ToString();
+        tbPrice.Text = product.Price.ToString();
     }
 
     private void ReloadProducts() {
