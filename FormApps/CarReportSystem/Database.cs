@@ -20,9 +20,22 @@ namespace CarReportSystem {
             //接続して CREATE TABLE IF NOT EXISTS を実行
             using var connection = GetConnection();
             connection.Open();
-            using var command = CreateCommand();
-
+            using var command = connection.CreateCommand();
+            command.CommandText =
+                """
+                CREATE TABLE IF NOT EXISTS CarReports (
+                    Id          INTEGER PRIMARY KEY AUTOINCREMENT
+                    Date        TEXT    NOT NULL,
+                    Authour     TEXT    NOT NULL,
+                    Maker       INTEGER NOT NULL,
+                    CarName     TEXT    NOT NULL,
+                    Report      TEXT    NOT NULL,
+                    Picture     BLOB
+                );
+                """;
+            command.ExecuteNonQuery();
         }
-        //CREATE TABLE 
+        
+
     }
 }
