@@ -3,12 +3,17 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml;
 using System.Xml.Serialization;
 using static CarReportSystem.CarReport;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace CarReportSystem {
     public partial class Form1 : Form {
 
         //カーレポート管理用リスト
         BindingList<CarReport> listCarReports = new BindingList<CarReport>();
+        // DataGridViewへ表示する商品の一覧
+        private readonly BindingList<CarReport> _carreports = new();
+        // DB操作を担当するRepository
+        private readonly CarReportRepository _repository = new();
 
         //設定クラスのオブジェクトを生成
         //Settings settings = Settings.Instance;
@@ -44,11 +49,11 @@ namespace CarReportSystem {
         //追加ボタンイベントハンドラ
         private void btAddRecord_Click(object sender, EventArgs e) {
 
-            tsslbMessage.Text = String.Empty;   //メッセージ領域のクリア
+            tsslbMessage.Text = string.Empty;   //メッセージ領域のクリア
 
             //記録者と車名が未入力だった場合は追加しない
             //if(cbAuthor.Text == String.Empty || cbCarName.Text == String.Empty) {
-            if (String.IsNullOrWhiteSpace(cbAuthor.Text) || String.IsNullOrWhiteSpace(cbCarName.Text)) {
+            if (string.IsNullOrWhiteSpace(cbAuthor.Text) || string.IsNullOrWhiteSpace(cbCarName.Text)) {
                 tsslbMessage.Text = "記録者、または車名が未入力です";
                 return;
             }
@@ -62,6 +67,20 @@ namespace CarReportSystem {
                 Picture = pbPicture.Image,
             };
             listCarReports.Add(carReport);
+
+            if (!GetAll(out DateTime date, out string author, out MakerGroup maker, out string carname, out string report, out Image? picture
+                ))
+                return;
+
+            try {
+                _repository.Add(date,author,maker,carname,report,picture);
+                ReloadRecords();
+                
+                tsslbMessage.Text = "商品を登録しました。";
+            }
+            catch {
+                tsslbMessage.Text = "登録エラー";
+            }
 
             //入力履歴を登録
             SetCbAuthor(cbAuthor.Text.Trim());
@@ -170,8 +189,8 @@ namespace CarReportSystem {
                 return;
             }
 
-            if (String.IsNullOrWhiteSpace(cbAuthor.Text)
-                    || String.IsNullOrWhiteSpace(cbCarName.Text)) {
+            if (string.IsNullOrWhiteSpace(cbAuthor.Text)
+                    || string.IsNullOrWhiteSpace(cbCarName.Text)) {
                 tsslbMessage.Text = "記録者、または車名が未入力です";
                 return;
             }
@@ -286,5 +305,14 @@ namespace CarReportSystem {
             }
 
         }
+        private void ReloadRecords() {
+            _carreports.Clear();
+            foreach (var carReport in _repository.GetAll()) {
+                _carreports.Add(carReport);
+            }
+            dgvRecords.ClearSelection();
+        }
+
+
     }
 }

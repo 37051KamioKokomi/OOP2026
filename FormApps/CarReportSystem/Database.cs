@@ -19,7 +19,7 @@ namespace CarReportSystem {
             command.CommandText =
                 """
                 CREATE TABLE IF NOT EXISTS CarReports (
-                    Id          INTEGER PRIMARY KEY AUTOINCREMENT
+                    Id          INTEGER PRIMARY KEY AUTOINCREMENT,
                     Date        TEXT    NOT NULL,
                     Authour     TEXT    NOT NULL,
                     Maker       INTEGER NOT NULL,

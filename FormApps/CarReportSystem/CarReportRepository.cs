@@ -1,14 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.Metrics;
-using System.Drawing.Imaging;
+﻿using System.Drawing.Imaging;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 using static CarReportSystem.CarReport;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace CarReportSystem {
     public class CarReportRepository {
