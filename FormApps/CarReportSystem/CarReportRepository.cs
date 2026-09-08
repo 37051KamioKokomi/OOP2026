@@ -42,7 +42,8 @@ namespace CarReportSystem {
                     Maker = (CarReport.MakerGroup)reader.GetInt32(3),
                     CarName = reader.GetString(4),
                     Report = reader.GetString(5),
-                    Picture = carreports.BytesToImag()
+                    Picture = reader.IsDBNull(6)
+                              ? null : BytesToImage(reader.GetFieldValue<byte[]>(6))
                 });
                 
             }
@@ -69,7 +70,7 @@ namespace CarReportSystem {
             command.Parameters.AddWithValue("$maker", maker);
             command.Parameters.AddWithValue("$carname", carname);
             command.Parameters.AddWithValue("$report", report);
-            command.Parameters.AddWithValue("$picture", picture);
+            command.Parameters.AddWithValue("$picture", Picture);
 
             //一つの値を返すSQLを実行する
             var result = command.ExecuteScalar();
@@ -119,9 +120,9 @@ namespace CarReportSystem {
             using var command = connection.CreateCommand();
             command.CommandText =
             """
-        DELETE FROM Products
-        WHERE Id = $id;
-        """;
+            DELETE FROM Products
+            WHERE Id = $id;
+            """;
 
             command.Parameters.AddWithValue("$id", id);
             command.ExecuteNonQuery();
