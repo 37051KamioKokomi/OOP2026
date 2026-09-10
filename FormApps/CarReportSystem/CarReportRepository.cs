@@ -1,4 +1,5 @@
-﻿using System.Drawing.Imaging;
+﻿using Microsoft.Data.Sqlite;
+using System.Drawing.Imaging;
 using System.Globalization;
 using static CarReportSystem.CarReport;
 
@@ -42,14 +43,15 @@ namespace CarReportSystem {
             return carreports;
         }
 
-        public int Add(DateTime date,string author, MakerGroup maker,string carname,string report, Image? Picture) {
+        public int Add(CarReport carreport) {
+            //DateTime date,string author, MakerGroup maker,string carname,string report, Image? Picture
             using var connection = Database.GetConnection();
             connection.Open();
             using var command = connection.CreateCommand();
             command.CommandText =
                 """
                 INSERT INTO CarReports
-                (Date, Author, Maker, CarName,Report, Picture)
+                (Date, Author, Maker, CarName, Report, Picture)
                 VALUES
                 (&date, $author, $maker, $carname, $report, $picture);
 
@@ -57,12 +59,7 @@ namespace CarReportSystem {
 
                 """;
 
-            command.Parameters.AddWithValue("$date", date);
-            command.Parameters.AddWithValue("$author", author);
-            command.Parameters.AddWithValue("$maker", maker);
-            command.Parameters.AddWithValue("$carname", carname);
-            command.Parameters.AddWithValue("$report", report);
-            command.Parameters.AddWithValue("$picture", Picture);
+            SetCommandParametaers(carreport, command);
 
             //一つの値を返すSQLを実行する
             var result = command.ExecuteScalar();
@@ -73,10 +70,29 @@ namespace CarReportSystem {
 
             // SQLiteのINTERGERはlongとして帰るため、intへ変換する
             return Convert.ToInt32((long)result);
-            
+
         }
 
-        public void Update(CarReport carReport) {
+        private static void SetCommandParametaers(CarReport carreport, SqliteCommand command) {
+            command.Parameters.AddWithValue("$date", carreport.Date.ToString("yyyy-MMDD", CultureInfo.InvariantCulture));
+            command.Parameters.AddWithValue("$author", carreport.Author);
+            command.Parameters.AddWithValue("$maker", carreport.Maker);
+            command.Parameters.AddWithValue("$carname", carreport.CarName);
+            command.Parameters.AddWithValue("$report", carreport.Report);
+            //command.Parameters.AddWithValue("$picture", Picture);
+
+            byte[]? pictureData = ImageToBytes(carreport.Picture);
+
+            var pictureParamater = command.Parameters.Add("$picture", SqliteType.Blob);
+
+            if (pictureData is null) {
+                pictureParamater.Value = pictureData;
+            } else {
+                pictureParamater.Value = DBNull.Value;
+            }
+        }
+
+        public void Update(CarReport carreport) {
             //接続オブジェクトを生成する。
             using var connection = Database.GetConnection();
             connection.Open();
@@ -93,12 +109,10 @@ namespace CarReportSystem {
             WHERE Id = $id;
             """;
 
-            command.Parameters.AddWithValue("$date", carReport.Date);
-            command.Parameters.AddWithValue("$author", carReport.Author);
-            command.Parameters.AddWithValue("$maker", carReport.Maker);
-            command.Parameters.AddWithValue("$carname", carReport.CarName);
-            command.Parameters.AddWithValue("$report", carReport.Report);
-            command.Parameters.AddWithValue("$picture", carReport.Picture);
+            SetCommandParametaers(carreport, command);
+
+            
+            
 
             //更新対象が0なら対象が存在しない
             if (command.ExecuteNonQuery() == 0)
@@ -116,8 +130,12 @@ namespace CarReportSystem {
             WHERE Id = $id;
             """;
 
+
             command.Parameters.AddWithValue("$id", id);
-            command.ExecuteNonQuery();
+
+            if (command.ExecuteNonQuery() == 0)
+                throw new InvalidCastException("削除対象のレポートが見つかりませんでした。");
+            
         }
 
         // ImageをSQLiteへ保存できるbyte[]へ変換する

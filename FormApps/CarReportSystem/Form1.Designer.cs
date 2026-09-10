@@ -98,7 +98,6 @@
             cbAuthor.Name = "cbAuthor";
             cbAuthor.Size = new Size(218, 38);
             cbAuthor.TabIndex = 2;
-            
             // 
             // label2
             // 
@@ -133,6 +132,7 @@
             groupBox1.Size = new Size(423, 37);
             groupBox1.TabIndex = 3;
             groupBox1.TabStop = false;
+            groupBox1.Enter += groupBox1_Enter;
             // 
             // rbOther
             // 
@@ -188,6 +188,7 @@
             rbNissan.TabStop = true;
             rbNissan.Text = "日産";
             rbNissan.UseVisualStyleBackColor = true;
+            rbNissan.CheckedChanged += rbNissan_CheckedChanged;
             // 
             // rbToyota
             // 
@@ -218,6 +219,7 @@
             cbCarName.Name = "cbCarName";
             cbCarName.Size = new Size(218, 38);
             cbCarName.TabIndex = 2;
+            cbCarName.SelectedIndexChanged += cbCarName_SelectedIndexChanged;
             // 
             // label5
             // 
@@ -372,21 +374,21 @@
             // 開くToolStripMenuItem
             // 
             開くToolStripMenuItem.Name = "開くToolStripMenuItem";
-            開くToolStripMenuItem.Size = new Size(180, 22);
+            開くToolStripMenuItem.Size = new Size(155, 22);
             開くToolStripMenuItem.Text = "開く…";
             開くToolStripMenuItem.Click += 開くToolStripMenuItem_Click;
             // 
             // 保存ToolStripMenuItem
             // 
             保存ToolStripMenuItem.Name = "保存ToolStripMenuItem";
-            保存ToolStripMenuItem.Size = new Size(180, 22);
+            保存ToolStripMenuItem.Size = new Size(155, 22);
             保存ToolStripMenuItem.Text = "保存…";
             保存ToolStripMenuItem.Click += 保存ToolStripMenuItem_Click;
             // 
             // 色設定ToolStripMenuItem
             // 
             色設定ToolStripMenuItem.Name = "色設定ToolStripMenuItem";
-            色設定ToolStripMenuItem.Size = new Size(180, 22);
+            色設定ToolStripMenuItem.Size = new Size(155, 22);
             色設定ToolStripMenuItem.Text = "色設定…";
             色設定ToolStripMenuItem.Click += 色設定ToolStripMenuItem_Click;
             // 
@@ -394,14 +396,14 @@
             // 
             終了ToolStripMenuItem.Name = "終了ToolStripMenuItem";
             終了ToolStripMenuItem.ShortcutKeys = Keys.Alt | Keys.F4;
-            終了ToolStripMenuItem.Size = new Size(180, 22);
+            終了ToolStripMenuItem.Size = new Size(155, 22);
             終了ToolStripMenuItem.Text = "終了(&X)";
             終了ToolStripMenuItem.Click += 終了ToolStripMenuItem_Click;
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(177, 6);
+            toolStripSeparator1.Size = new Size(152, 6);
             // 
             // ヘルプHToolStripMenuItem
             // 

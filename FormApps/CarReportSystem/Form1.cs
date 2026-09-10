@@ -21,6 +21,23 @@ namespace CarReportSystem {
         public Form1() {
             InitializeComponent();
             dgvRecords.DataSource = listCarReports;
+
+            dgvRecords.AutoGenerateColumns = true;
+            //DataGridViewのデータ元としてBindingListを設定する
+            dgvRecords.DataSource = _carreports;
+            //起動直後にDBから商品一覧を読み込む
+            ReloadCarreports();
+
+            //使用中のDBファイルの場所をステータスバーへ表示する
+            tsslbMessage.Text = $"DB:{Database.FilePath}";
+        }
+
+        private void ReloadCarreports() {
+            _carreports.Clear();
+            foreach (var carreports in _repository.GetAll()) {
+                _carreports.Add(carreports);
+            }
+            dgvRecords.ClearSelection();
         }
 
         private void Form1_Load(object sender, EventArgs e) {
@@ -36,7 +53,7 @@ namespace CarReportSystem {
                 MessageBox.Show(ex.Message);//←より具体的なエラーを出力         
             }
             // tsslbMessage.Text = "設定ファイルがありません";
-            
+
         }
 
         //フォームが閉じたら呼ばれるイベントハンドラ
@@ -52,42 +69,42 @@ namespace CarReportSystem {
             tsslbMessage.Text = string.Empty;   //メッセージ領域のクリア
 
             //記録者と車名が未入力だった場合は追加しない
-            //if(cbAuthor.Text == String.Empty || cbCarName.Text == String.Empty) {
-            if (string.IsNullOrWhiteSpace(cbAuthor.Text) || string.IsNullOrWhiteSpace(cbCarName.Text)) {
-                tsslbMessage.Text = "記録者、または車名が未入力です";
-                return;
+            if (cbAuthor.Text == string.Empty || cbCarName.Text == string.Empty) {
+                if (string.IsNullOrWhiteSpace(cbAuthor.Text) || string.IsNullOrWhiteSpace(cbCarName.Text)) {
+                    tsslbMessage.Text = "記録者、または車名が未入力です";
+                    return;
+                }
+
+                var carReport = new CarReport {
+                    Date = dtpDate.Value.Date,
+                    Author = cbAuthor.Text.Trim(),
+                    Maker = GetRadioButtonMaker(),
+                    CarName = cbCarName.Text.Trim(),
+                    Report = tbReport.Text,
+                    Picture = pbPicture.Image,
+                };
+                listCarReports.Add(carReport);
+
+
+
+                try {
+                    _repository.Add(carReport);
+                    //dtpDate.Value, cbAuthor.Text, GetRadioButtonMaker(), cbCarName.Text, tbReport.Text, pbPicture.Image
+                    ReloadRecords();
+
+                    tsslbMessage.Text = "商品を登録しました。";
+                }
+                catch {
+                    tsslbMessage.Text = "登録エラー";
+                }
+
+                //入力履歴を登録
+                SetCbAuthor(cbAuthor.Text.Trim());
+                SetCbCarName(cbCarName.Text.Trim());
+
+                dgvRecords.ClearSelection(); //セルの選択を解除する
+                InputItemsUpdate(); //データグリッドビューを更新したら呼ぶメソッド
             }
-
-            var carReport = new CarReport {
-                Date = dtpDate.Value.Date,
-                Author = cbAuthor.Text.Trim(),
-                Maker = GetRadioButtonMaker(),
-                CarName = cbCarName.Text.Trim(),
-                Report = tbReport.Text,
-                Picture = pbPicture.Image,
-            };
-            listCarReports.Add(carReport);
-
-            if (!GetAll(out DateTime date, out string author, out MakerGroup maker, out string carname, out string report, out Image? picture
-                ))
-                return;
-
-            try {
-                _repository.Add(date,author,maker,carname,report,picture);
-                ReloadRecords();
-                
-                tsslbMessage.Text = "商品を登録しました。";
-            }
-            catch {
-                tsslbMessage.Text = "登録エラー";
-            }
-
-            //入力履歴を登録
-            SetCbAuthor(cbAuthor.Text.Trim());
-            SetCbCarName(cbCarName.Text.Trim());
-
-            dgvRecords.ClearSelection(); //セルの選択を解除する
-            InputItemsUpdate(); //データグリッドビューを更新したら呼ぶメソッド
         }
 
         private MakerGroup GetRadioButtonMaker() {
@@ -242,7 +259,7 @@ namespace CarReportSystem {
             }
         }
 
-        
+
 
         private void 保存ToolStripMenuItem_Click(object sender, EventArgs e) {
             reportSaveFile();
@@ -313,6 +330,16 @@ namespace CarReportSystem {
             dgvRecords.ClearSelection();
         }
 
+        private void rbNissan_CheckedChanged(object sender, EventArgs e) {
 
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e) {
+
+        }
+
+        private void cbCarName_SelectedIndexChanged(object sender, EventArgs e) {
+
+        }
     }
 }

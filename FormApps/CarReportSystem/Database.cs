@@ -8,6 +8,8 @@ namespace CarReportSystem {
         private static readonly string ConnectionString =
             $"Data Source={DatabasePath}";
 
+        public static string FilePath => DatabasePath;
+
         public static SqliteConnection GetConnection()
             => new SqliteConnection(ConnectionString);
 
@@ -21,7 +23,7 @@ namespace CarReportSystem {
                 CREATE TABLE IF NOT EXISTS CarReports (
                     Id          INTEGER PRIMARY KEY AUTOINCREMENT,
                     Date        TEXT    NOT NULL,
-                    Authour     TEXT    NOT NULL,
+                    Author      TEXT    NOT NULL,
                     Maker       INTEGER NOT NULL,
                     CarName     TEXT    NOT NULL,
                     Report      TEXT    NOT NULL,
@@ -30,7 +32,7 @@ namespace CarReportSystem {
                 """;
             command.ExecuteNonQuery();
         }
-        
+
 
     }
 }
