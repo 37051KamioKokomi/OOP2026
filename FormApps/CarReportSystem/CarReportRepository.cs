@@ -7,7 +7,7 @@ namespace CarReportSystem {
     public class CarReportRepository {
         public List<CarReport> GetAll() {
 
-            var carreports = new List<CarReport>();
+            var reports = new List<CarReport>();
 
             using var connection = Database.GetConnection();
             connection.Open();
@@ -24,11 +24,11 @@ namespace CarReportSystem {
             using var reader = command.ExecuteReader();
 
             while (reader.Read()) {
-                carreports.Add(new CarReport {
+                reports.Add(new CarReport {
                     Id = reader.GetInt32(0),
                     Date = DateTime.ParseExact(
                         reader.GetString(1),
-                        "yyyy-mm-dd",
+                        "yyyy-MM-dd",
                         CultureInfo.InvariantCulture),
 
                     Author = reader.GetString(2),
@@ -40,10 +40,10 @@ namespace CarReportSystem {
                 });
                 
             }
-            return carreports;
+            return reports;
         }
 
-        public int Add(CarReport carreport) {
+        public int Add(CarReport reports) {
             //DateTime date,string author, MakerGroup maker,string carname,string report, Image? Picture
             using var connection = Database.GetConnection();
             connection.Open();
@@ -53,13 +53,13 @@ namespace CarReportSystem {
                 INSERT INTO CarReports
                 (Date, Author, Maker, CarName, Report, Picture)
                 VALUES
-                (&date, $author, $maker, $carname, $report, $picture);
+                ($date, $author, $maker, $carname, $report, $picture);
 
                 SELECT last_insert_rowid();
 
                 """;
 
-            SetCommandParametaers(carreport, command);
+            SetCommandParametaers(reports, command);
 
             //一つの値を返すSQLを実行する
             var result = command.ExecuteScalar();
@@ -73,26 +73,29 @@ namespace CarReportSystem {
 
         }
 
-        private static void SetCommandParametaers(CarReport carreport, SqliteCommand command) {
-            command.Parameters.AddWithValue("$date", carreport.Date.ToString("yyyy-MMDD", CultureInfo.InvariantCulture));
-            command.Parameters.AddWithValue("$author", carreport.Author);
-            command.Parameters.AddWithValue("$maker", carreport.Maker);
-            command.Parameters.AddWithValue("$carname", carreport.CarName);
-            command.Parameters.AddWithValue("$report", carreport.Report);
+        private static void SetCommandParametaers(CarReport reports, SqliteCommand command) {
+            command.Parameters.AddWithValue("$date", reports.Date.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture));
+            command.Parameters.AddWithValue("$author", reports.Author);
+            command.Parameters.AddWithValue("$maker", reports.Maker);
+            command.Parameters.AddWithValue("$carname", reports.CarName);
+            command.Parameters.AddWithValue("$report", reports.Report);
+
+            // Update 用の Id パラメータを追加
+            command.Parameters.AddWithValue("$id", reports.Id);
             //command.Parameters.AddWithValue("$picture", Picture);
 
-            byte[]? pictureData = ImageToBytes(carreport.Picture);
+            byte[]? pictureData = ImageToBytes(reports.Picture);
 
             var pictureParamater = command.Parameters.Add("$picture", SqliteType.Blob);
 
-            if (pictureData is null) {
+            if (pictureData is not null) {
                 pictureParamater.Value = pictureData;
             } else {
                 pictureParamater.Value = DBNull.Value;
             }
         }
 
-        public void Update(CarReport carreport) {
+        public void Update(CarReport reports) {
             //接続オブジェクトを生成する。
             using var connection = Database.GetConnection();
             connection.Open();
@@ -106,17 +109,18 @@ namespace CarReportSystem {
                 Maker = $maker,
                 CarName = $carname,
                 Report = $report,
+                Picture = $picture
             WHERE Id = $id;
             """;
 
-            SetCommandParametaers(carreport, command);
+            SetCommandParametaers(reports, command);
 
             
             
 
             //更新対象が0なら対象が存在しない
             if (command.ExecuteNonQuery() == 0)
-                throw new InvalidOperationException("修正対象の商品が見つかりませんでした。");
+                throw new InvalidOperationException("修正対象のレポートが見つかりませんでした。");
         }
 
         public void Delete(int id) {
@@ -126,7 +130,7 @@ namespace CarReportSystem {
             using var command = connection.CreateCommand();
             command.CommandText =
             """
-            DELETE FROM Products
+            DELETE FROM CarReports
             WHERE Id = $id;
             """;
 

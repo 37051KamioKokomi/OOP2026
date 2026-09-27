@@ -10,10 +10,22 @@ namespace CarReportSystem {
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Database.Initialize();
-            Application.Run(new Form1());
+            try {
+                //SQLiteデータベースを初期化する
+                //carreports,db が存在しない場合は作成される
+                //carreportsテーブルも存在しない場合だけ作成される
+                Database.Initialize();
+                Application.Run(new Form1());
+            }
+            catch (Exception ex) {
+                MessageBox.Show(
+                    $"アプリケーションの起動に失敗しました。\n\n{ex.Message}",
+                    "起動エラー",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
 
-           
+
         }
     }
 }
