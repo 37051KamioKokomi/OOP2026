@@ -19,8 +19,13 @@
     //タグの中で使う場合は@
     @foreach(var product in Model)
     {
-        <li>@product.Name @product.Price 円</li>
-
+        <li>@product.Name @product.Price 円
+            @if (product.Stock == 0) {
+                <span class="text-danger fw-bold">売り切れ</span>
+            } else {
+                <span>在庫 @product.Stock</span>
+            }
+        </li>
     }
 }
 
