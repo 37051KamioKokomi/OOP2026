@@ -3,15 +3,18 @@ using Microsoft.EntityFrameworkCore;
 using SelfOrderSystem.Data;
 using SelfOrderSystem.Models;
 using SelfOrderSystem.ViewModels;
+using SelfOrderSystem.Services;   // MenuController.cs のusing へ追加する
 
 namespace SelfOrderSystem.Controllers;
 public class MenuController : Controller{
 
     private readonly AppDbContext _db;
+    private readonly CartService _cart;
 
-    // ASP.NET Core から必要なAppDbContext を受け取る
-    public MenuController(AppDbContext db) {
-        _db = db; //DIで受け取る
+    // ASP.NET Core から必要なAppDbContextとCartService を受け取る
+    public MenuController(AppDbContext db, CartService cart) {
+        _db = db;
+        _cart = cart;
     }
 
     public async Task<IActionResult> Index(int? categoryId) {
@@ -35,10 +38,14 @@ public class MenuController : Controller{
                         .ThenBy(p => p.Name)
                         .ToListAsync();
 
+        var cartItems = _cart.GetItems();　//Sessionからカートを取得
+
         var vm = new MenuViewModel {
             Categories = categories,
             Products = products,
-            SelectedCategoryId = categoryId
+            SelectedCategoryId = categoryId,
+            CartItemCount = cartItems.Sum(x => x.Quantity), //商品数量の合計
+            CartTotal = cartItems.Sum(x => x.LineTotal)　   //小計の合計
         };
         return View(vm); // ViewModel をView へ渡す
     }
