@@ -6,24 +6,31 @@
         xmlns:local="clr-namespace:Exercise01_WPF"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    
-    
-    <Grid>
+
+
+    <Grid HorizontalAlignment="Left" Width="800">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="5*"/>
+
+        </Grid.ColumnDefinitions>
+
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="5*"/>
+
         </Grid.RowDefinitions>
 
-        <Button Grid.Row="0"
+        <Button Grid.Row="0" Grid.Column="0"
             Content="ファイル選択"
             Click="Button_Click"/>
 
-        <TextBox Grid.Row="1"
+        <TextBox Grid.Column="0" Grid.ColumnSpan="2"
                  FontSize="16"
              x:Name="TextArea"
-             AcceptsReturn="True"
+             Height="410"
              TextWrapping="Wrap"
-             VerticalScrollBarVisibility="Auto"/>
+             VerticalScrollBarVisibility="Auto" HorizontalAlignment="Left" Margin="0,72,0,-48" Grid.RowSpan="2" Width="800"/>
     </Grid>
 
 </Window>
