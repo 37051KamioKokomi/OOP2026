@@ -23,7 +23,7 @@ public class FileProgramProcessor : TextProcessor {
 
         if (string.IsNullOrEmpty(_words))
             return;
-
+ 
         int index = 0;
 
         while ((index = line.IndexOf(_words, index)) >= 0) {
