@@ -16,10 +16,12 @@ public class FileProgramProcessor : TextProcessor {
     }
 
     protected override void Execute(string line) {
-        
+
         //if (line.Contains(_words)) {
         //    _count++;
         //}
+
+        //_count += line.Split(_words).Length - 1;
 
         if (string.IsNullOrEmpty(_words))
             return;
