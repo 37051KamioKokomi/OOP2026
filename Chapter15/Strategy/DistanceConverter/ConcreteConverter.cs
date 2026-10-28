@@ -43,6 +43,6 @@ public class MileConverter : ConverterBase {
 public class KiloMeterConverter : ConverterBase {
     public override bool IsMyUnit(string name) =>
         name.Equals("kilometer", StringComparison.CurrentCultureIgnoreCase) || name == UnitName;
-    protected override double Ratio => 1000;
+    protected override double Ratio => 1000.0;
     public override string UnitName => "キロメートル";
 }
