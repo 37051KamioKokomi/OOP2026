@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace TextFileProcessorDI {
     public interface ITextFileService {
         void Initialize(string fname);
-        void Execute(string line);
+        bool Execute(string line);
         void Terminate();
     }
 }
