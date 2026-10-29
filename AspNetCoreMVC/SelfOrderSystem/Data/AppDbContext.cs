@@ -14,6 +14,19 @@ namespace SelfOrderSystem.Data {
         // Products テーブルを Product 型として問い合わせるためのプロパティ
         public DbSet<Product> Products => Set<Product>();
 
+        public DbSet<Order> Orders => Set<Order>();
+        public DbSet<OrderItem> OrderItems => Set<OrderItem>();
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder) {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Order>()
+            .HasIndex(o => o.PublicId)
+            .IsUnique(); // 公開ID の重複を防止
+            modelBuilder.Entity<OrderItem>()
+            .HasOne(i => i.Product)
+            .WithMany()
+            .HasForeignKey(i => i.ProductId)
+            .OnDelete(DeleteBehavior.Restrict); // 注文履歴を保護
+        }
     }
 }
