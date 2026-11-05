@@ -1,4 +1,112 @@
-html {
+
+:root {
+    --bg-main: #f4f1eb;
+    --bg-card: #fffdf9;
+    --ice-green: #dff5ea;
+    --opal-green: #bdd8c4;
+    --sage-green: #95aa98;
+    --brown: #755d49;
+    --text: #4f4f4f;
+}
+
+body {
+    background: linear-gradient( 180deg, #f8f6f2 0%, #f2efe8 100% );
+}
+
+main {
+    background: rgba(255,255,255,0.4);
+    backdrop-filter: blur(10px);
+    border-radius: 24px;
+    padding: 30px;
+    margin-top: 30px;
+}
+
+.navbar {
+    background: linear-gradient( 90deg, #eaf6ef, #d6e7da ) !important;
+    box-shadow: 0 4px 25px rgba(0,0,0,.05);
+    border-bottom: 1px solid rgba(149,170,152,.2);
+}
+
+.navbar-brand {
+    font-family: 'Cormorant Garamond',serif;
+    font-size: 2rem;
+    color: #755d49 !important;
+    letter-spacing: .12em;
+}
+
+.card {
+    background: var(--bg-card);
+    border: none;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 12px 35px rgba(0,0,0,.06);
+    transition: 0.3s;
+}
+
+    .card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 18px 40px rgba(0,0,0,.10);
+    }
+
+.btn-primary {
+    background: #7d9f87;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 24px;
+    font-weight: 500;
+}
+
+    .btn-primary:hover {
+        background: #688775;
+    }
+
+h1 {
+    font-size: 3rem;
+    font-weight: 300;
+    letter-spacing: .25em;
+    color: #755d49;
+}
+
+
+.card img {
+    height: 220px;
+    object-fit: cover;
+}
+
+.menu-container {
+    background: rgba(255,255,255,.7);
+    backdrop-filter: blur(10px);
+    border-radius: 32px;
+    padding: 40px;
+    box-shadow: 0 15px 50px rgba(0,0,0,.05);
+}
+
+.subtitle {
+    text-align: center;
+    color: #8faf99;
+    letter-spacing: .15em;
+    font-size: .85rem;
+}
+
+.card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.btn-primary {
+    background: #8faf99;
+    border: none;
+    letter-spacing: .05em;
+    transition: .3s;
+}
+
+    .btn-primary:hover {
+        background: #799080;
+        transform: translateY(-2px);
+    }
+
+/*html {
   font-size: 14px;
 }
 
@@ -19,4 +127,205 @@ html {
 
 body {
   margin-bottom: 60px;
+}*/
+
+/* AIデザイン演習用の追加スタイル */
+/*:root {
+    --brand-color: #395c47;
+    --page-bg: #f7f6f1;
 }
+
+body {
+    background: var(--page-bg);
+}
+
+h1, h2 {
+    color: var(--brand-color);
+}
+
+.btn-success {
+    background-color: var(--brand-color);
+    border-color: var(--brand-color);
+}
+
+    .btn-success:hover {
+        background-color: #A5D3B6;
+        border-color: #B0CFC0;
+    }*/
+
+/* ===== Cafe Theme ===== */
+
+/*:root {
+    --ice-green: #D8F3E3;
+    --opal-green: #A8D5BA;
+    --mint-green: #CDE8D0;
+    --cream: #FAF8F2;
+    --brown: #8B6B4F;
+    --dark-brown: #5E4A38;
+}*/
+
+/* 全体 */
+/*body {
+    background-color: var(--cream);
+    color: var(--dark-brown);
+    font-family: "Yu Gothic UI", "Hiragino Sans", sans-serif;
+}*/
+
+/* ナビゲーションバー */
+/*.navbar {
+    background: linear-gradient( 135deg, var(--ice-green), var(--opal-green) ) !important;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.navbar-brand,
+.nav-link {
+    color: var(--dark-brown) !important;
+    font-weight: 600;
+}
+
+    .nav-link:hover {
+        color: white !important;
+    }*/
+
+/* カード */
+/*.card {
+    border: none;
+    border-radius: 20px;
+    background: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+    .card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    }*/
+
+/* ボタン */
+/*.btn-primary {
+    background-color: var(--opal-green);
+    border-color: var(--opal-green);
+    border-radius: 50px;
+    font-weight: 600;
+}
+
+    .btn-primary:hover {
+        background-color: #8bc3a2;
+        border-color: #8bc3a2;
+    }*/
+
+/* テーブル */
+/*.table {
+    background-color: white;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+    .table thead {
+        background-color: var(--ice-green);
+    }*/
+
+/* フォーム */
+/*.form-control,
+.form-select {
+    border-radius: 12px;
+    border: 1px solid #d9e5dd;
+}
+
+    .form-control:focus,
+    .form-select:focus {
+        border-color: var(--opal-green);
+        box-shadow: 0 0 0 0.2rem rgba(168, 213, 186, 0.3);
+    }*/
+
+/* 見出し */
+/*h1,
+h2,
+h3 {
+    color: var(--brown);
+    font-weight: 700;
+}*/
+
+/* コンテンツ領域 */
+/*.container {
+    animation: fadeIn 0.5s ease;
+}*/
+
+/* ふわっと表示 */
+/*@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}*/
+
+/* ====================================
+   Omotesando Cafe Theme
+==================================== */
+
+/*:root {
+    --ice-green: #dff5ea;
+    --opal-green: #b8dbc3;
+    --sage-green: #8faf99;
+    --cream: #faf8f4;
+    --ivory: #fffdf9;
+    --brown: #6d5846;
+    --text: #4a4a4a;
+}
+
+body {
+    background: var(--cream);
+    color: var(--text);
+    font-family: "Avenir Next", "Helvetica Neue", "Yu Gothic", sans-serif;
+    letter-spacing: 0.03em;
+    line-height: 1.7;
+}*/
+
+/* メインエリア */
+/*main {
+    padding-top: 20px;
+}*/
+
+/* ナビバー */
+/*.navbar {
+    background: rgba(255,255,255,0.9) !important;
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(184,219,195,.3);
+    box-shadow: 0 4px 20px rgba(0,0,0,.03);
+}
+
+.navbar-brand {
+    color: var(--sage-green) !important;
+    font-size: 1.4rem;
+    font-weight: 300;
+    letter-spacing: .15em;
+}
+
+.nav-link {
+    color: var(--text) !important;
+    transition: .3s;
+}
+
+    .nav-link:hover {
+        color: var(--sage-green) !important;
+    }*/
+
+/* カード */
+/*.card {
+    border: none;
+    : root
+
+{
+    --bg-main: #f4f1eb;
+    --bg-card: #fffdf9;
+    --ice-green: #dff5ea;
+    --opal-green: #bdd8c4;
+    --sage-green: #95aa98;
+    --brown: #755d49;
+    --text: #4f4f4f;
+}*/

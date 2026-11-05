@@ -11,8 +11,8 @@ namespace Section03 {
             //Thread.Sleep(5000);
             //MessageBox.Show("Š®—¹");
 
-            //await Task.Delay(5000);
-            //MessageBox.Show("Š®—¹");
+            await Task.Delay(5000);
+            MessageBox.Show("Š®—¹");
 
             var elapsed = await DoLongtimeWork(5000);
             MessageBox.Show(elapsed + "ƒ~ƒŠ•b");
