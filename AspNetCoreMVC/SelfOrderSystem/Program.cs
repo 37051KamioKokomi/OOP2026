@@ -23,6 +23,7 @@ options.Cookie.IsEssential = true;                // Session ID 用Cookie を必須C
 builder.Services.AddHttpContextAccessor();   // Controller 以外のクラスからHttpContext を取得できるようにする
 builder.Services.AddScoped<CartService>();   // CartService をDI へ登録しControllerで受け取れるようにする
 
+builder.Services.AddScoped<IOrderService, OrderService>(); //サービス層を作成したことによる追加
 
 var app = builder.Build();
 
