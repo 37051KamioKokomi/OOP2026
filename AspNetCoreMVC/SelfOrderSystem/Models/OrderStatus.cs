@@ -6,4 +6,6 @@
         Cooking,      //調理中
         Served        //提供済み
     }
+
+
 }
