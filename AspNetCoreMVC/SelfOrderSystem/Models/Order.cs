@@ -2,7 +2,7 @@
 
 namespace SelfOrderSystem.Models;
 
-public class Order {     // 注文全体を表す親Model
+public class Order {
     public int Id { get; set; } // DB 内の注文ID
     public Guid PublicId { get; set; } = Guid.NewGuid();
     [Range(1, 999)]

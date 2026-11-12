@@ -1,24 +1,22 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using SelfOrderSystem.Data;
 using SelfOrderSystem.Models;
 using SelfOrderSystem.Services;
 using SelfOrderSystem.ViewModels;
-using System.Numerics; 
+using System.Numerics;
 
 namespace SelfOrderSystem.Controllers;
 
 public class OrdersController : Controller {
     private readonly AppDbContext _db;              // 商品と注文のDB 操作
     private readonly CartService _cart;             // Session 内のカート操作
-    private readonly IOrderService _orderServices;  //注文の検証と保存を担当するServices
+    private readonly IOrderService _orderService;   //注文の検証と保存を担当するService    
 
-    //依存性の注入
     public OrdersController(AppDbContext db, CartService cart, IOrderService orderService) {
         _db = db;
         _cart = cart;
-        _orderServices = orderService;
+        _orderService = orderService;
     }
 
     [HttpGet]
@@ -34,20 +32,20 @@ public class OrdersController : Controller {
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Place(CheckoutViewModel model) {
         var cartItems = _cart.GetItems(); // Session を再取得
-
         
+
         if (!ModelState.IsValid) {
             model.Items = cartItems; // 再表示用の一覧を戻す
             return View("Checkout", model);
         }
 
-        //注文処理を Service へ依頼
-        var result = await _orderServices.PlaceAsync(cartItems,model.TableNumber);
+        // 注文処理を Service へ依頼
+        var result = await _orderService.PlaceAsync(cartItems, model.TableNumber);
 
         //エラーかチェック
         if (!result.IsSuccess) {
             foreach (var error in result.Errors) {
-                ModelState.AddModelError("", error);
+                ModelState.AddModelError("", error);    //エラーを画面表示する
             }
             model.Items = cartItems;
             return View("Checkout", model);
@@ -74,4 +72,5 @@ public class OrdersController : Controller {
         .ThenInclude(i => i.Product)
         .SingleOrDefaultAsync(o => o.PublicId == publicId);
     }
+
 }

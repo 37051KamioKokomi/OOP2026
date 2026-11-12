@@ -11,7 +11,7 @@ using SelfOrderSystem.Data;
 namespace SelfOrderSystem.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20261013014413_InitialCreate")]
+    [Migration("20261013014125_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

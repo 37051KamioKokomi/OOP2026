@@ -8,4 +8,3 @@ public class CartItem {
     public int Quantity { get; set; }                       // 数量
     public decimal LineTotal => UnitPrice * Quantity;       // 小計
 }
-

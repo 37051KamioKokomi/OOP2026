@@ -4,8 +4,7 @@ using SelfOrderSystem.Data;
 using SelfOrderSystem.Services;
 
 namespace SelfOrderSystem.Controllers;
-
-public class CartController : Controller {     // カート操作を受け取るController
+public class CartController : Controller {
     private readonly AppDbContext _db; // 商品確認用
     private readonly CartService _cart; // カート操作用
 
@@ -15,7 +14,7 @@ public class CartController : Controller {     // カート操作を受け取る
     }
 
     public IActionResult Index() {
-        return View(_cart.GetItems()); // Session のカート一覧をView へ渡す
+        return View(_cart.GetItems());  // Session のカート一覧をView へ渡す
     }
 
 
@@ -23,12 +22,13 @@ public class CartController : Controller {     // カート操作を受け取る
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Add(int productId) // 商品ID を受け取る
 {
-        var product = await _db.Products
-        .AsNoTracking() // 読み取り専用
-        .SingleOrDefaultAsync(p => p.Id == productId && p.IsActive); // 利用可能な商品を1 件取得
+        var product = await _db.Products.AsNoTracking() // 読み取り専用
+                                .SingleOrDefaultAsync(p => p.Id == productId && p.IsActive); // 利用可能な商品を1 件取得
+
         if (product == null) {
             return NotFound(); // 該当商品がなければ404 を返す
         }
+
         if (product.IsSoldOut) {
             TempData["Error"] = "この商品は売り切れです"; // 次の画面へエラーを渡す
             return RedirectToAction("Index", "Menu");
@@ -51,5 +51,3 @@ public class CartController : Controller {     // カート操作を受け取る
         return RedirectToAction(nameof(Index));
     }
 }
-
-

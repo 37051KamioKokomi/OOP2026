@@ -1,9 +1,12 @@
 ﻿@* カート画面はSession から取り出したCartItem 一覧を受け取る *@
 @model List<SelfOrderSystem.Models.CartItem>
+
 @{
     ViewData["Title"] = "カート";
     var total = Model.Sum(x => x.LineTotal); // 画面表示用に合計金額を計算する
 }
+
+
 <h1 class="h3 mb-3">カート</h1>
 @* カートが空なら商品一覧へ戻る案内を表示する *@
 @if (Model.Count == 0) {
