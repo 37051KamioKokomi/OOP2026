@@ -75,24 +75,52 @@
         </div>
     </div>
 
-    @* 右側 カード概要*@
+    @* 右側 カート概要*@
     <div class="col-12 col-lg-3">
         <aside class="card so-cart-sidebar">
             <div class="card-body">
-                <h2 class="h5">カート</h2>
+
+                <h2 class="h5">🛒 カート</h2>
+
+                @if (Model.CartItems.Any()) {
+                    @foreach (var item in Model.CartItems) {
+                        <div class="border-bottom py-2">
+
+                            <div class="fw-bold">
+                                @item.ProductName
+                            </div>
+
+                            <div class="small text-muted">
+                                @item.UnitPrice.ToString("N0")円 × @item.Quantity
+                            </div>
+
+                            <div class="text-end fw-bold">
+                                @item.LineTotal.ToString("N0")円
+                            </div>
+
+                        </div>
+                    }
+                } else {
+                    <p class="text-muted">
+                        カートは空です
+                    </p>
+                }
+
+                <hr />
 
                 <p>@Model.CartItemCount 点</p>
 
-                <p class="fw-bold">
+                <p class="fw-bold fs-5">
                     合計 @Model.CartTotal.ToString("N0")円
                 </p>
 
-                <a asp-controller="Cart" asp-action="Index"
+                <a asp-controller="Cart"
+                   asp-action="Index"
                    class="btn btn-primary w-100">
-                   カートを確認
-               </a>
-            </div>
+                    カートを確認
+                </a>
 
+            </div>
         </aside>
     </div>
 </div>
