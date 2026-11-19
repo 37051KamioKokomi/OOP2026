@@ -17,7 +17,7 @@ public static class StaffAccountSeeder {
         if (string.IsNullOrWhiteSpace(password) || password.Length < 12)
             throw new InvalidOperationException(
             "StaffAdmin:InitialPassword を12 文字以上で設定してください");
-        var user = new StaffUser { UserName = "staffadmin" };
+        var user = new StaffUser { UserName = "StaffAdmin" };
         user.PasswordHash = hasher.HashPassword(user, password);
         db.StaffUsers.Add(user);
         await db.SaveChangesAsync();

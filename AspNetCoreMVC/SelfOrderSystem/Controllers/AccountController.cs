@@ -31,9 +31,12 @@ public class AccountController : Controller {
     public async Task<IActionResult> Login(StaffLoginViewModel model) {
         if (!ModelState.IsValid) return View(model);
 
-        // ユーザー名でDB を検索
+        // ユーザー名でDBを検索（大文字・小文字を区別しない）
+        var inputUserName = model.UserName.Trim();
+
         var user = await _db.StaffUsers
-                            .SingleOrDefaultAsync(u => u.UserName == model.UserName);
+            .SingleOrDefaultAsync(u =>
+                u.UserName.ToLower() == inputUserName.ToLower());
 
         // 入力されたパスワードとハッシュを照合
         var valid = user != null && _hasher.VerifyHashedPassword(
