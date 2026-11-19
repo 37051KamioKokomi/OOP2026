@@ -8,8 +8,7 @@ a.navbar-brand {
 }
 
 a {
-/*    color: #0077cc;*/
-    color: #b6ff00;
+  color: #0077cc;
 }
 
 .btn-primary {
@@ -40,10 +39,10 @@ button.accept-policy {
   line-height: inherit;
 }
 
-/*.footer {
+.footer {
   position: absolute;
   bottom: 0;
   width: 100%;
   white-space: nowrap;
   line-height: 60px;
-}*/
+}

@@ -17,7 +17,7 @@ public static class StaffAccountSeeder {
         if (await db.StaffUsers.AnyAsync()) return;
 
         // 初期パスワードは設定から取得
-        var password = config["josemaru:InitialPassword"];
+        var password = config["StaffAdmin:InitialPassword"];
 
         if (string.IsNullOrWhiteSpace(password) || password.Length < 12)
             throw new InvalidOperationException(

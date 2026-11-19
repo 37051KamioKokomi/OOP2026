@@ -1,7 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using SelfOrderSystem.Data;
 using SelfOrderSystem.Services;
-using SelfOrderSystem.Hubs;
+using SelfOrderSystem.Hubs; // Hub の名前空間
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,7 +16,7 @@ builder.Services.AddDbContext<AppDbContext>(
 /////////
 
 builder.Services.AddDistributedMemoryCache(); // Session の保存領域としてアプリのメモリを使う
-builder.Services.AddSession(options => // Session 機能を登録
+builder.Services.AddSession(options => // Session 機能を登録 
 {
     options.IdleTimeout = TimeSpan.FromHours(2);    // 2 時間操作がなければ期限切れ
     options.Cookie.HttpOnly = true;                 // JavaScript からSession ID を読めないようにする
@@ -24,8 +25,11 @@ builder.Services.AddSession(options => // Session 機能を登録
 builder.Services.AddHttpContextAccessor(); // Controller 以外のクラスからHttpContext を取得できるようにする
 builder.Services.AddScoped<CartService>(); // CartService をDI へ登録しControllerで受け取れるようにする
 
-builder.Services.AddScoped<IOrderService, OrderService>();  //サービス層を作成したことによる追加
-builder.Services.AddSignalR();
+
+// builder.Services.AddScoped<CartService>(); の近くに追加 
+builder.Services.AddScoped<IOrderService, OrderService>();
+
+builder.Services.AddSignalR(); // builder.Build()より前 
 
 var app = builder.Build();
 
@@ -59,6 +63,6 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-app.MapHub<StaffOrdersHub>("/staffOrdersHub");
+app.MapHub<StaffOrdersHub>("/staffOrdersHub"); // app.Run()より前
 
 app.Run();

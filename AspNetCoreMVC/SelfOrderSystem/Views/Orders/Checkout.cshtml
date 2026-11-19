@@ -2,11 +2,10 @@
 @{
     ViewData["Title"] = "注文確認";
 }
-
 <h1 class="h3">注文内容の確認</h1>
-
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-@foreach (var item in Model.Items) {
+
+@foreach(var item in Model.Items) {
     <div class="d-flex justify-content-between border-bottom py-2">
         <span>@item.ProductName × @item.Quantity</span>
         <span>@item.LineTotal.ToString("N0") 円</span>
@@ -26,9 +25,9 @@
         注文を確定する
     </button>
 </form>
-
 <a asp-controller="Cart" asp-action="Index"
    class="btn btn-outline-secondary mt-3">カートに戻る</a>
+
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }

@@ -32,15 +32,12 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Staff" asp-action="Index">Staff</a>
                         </li>
 
-                        @if (!string.IsNullOrEmpty(Context.Session.GetString("LastOrderPublicId")))
+                        @if (!string.IsNullOrEmpty(Context.Session.GetString("LastOrderPublidId")))
                         {
                             <li class="nav-item">
-                                <a class="nav-link " asp-controller="Orders" asp-action="MyOrder">ご注文状況</a>
+                                <a class="nav-link" asp-controller="Order" asp-action="MyOrder">ご注文状況</a>
                             </li>
                         }
-
-
-
                     </ul>
                 </div>
             </div>
@@ -54,7 +51,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2026 - SelfOrderSystem - <a asp-area="" asp-controller="Home" asp-action="Privacy"></a>
+            &copy; 2026 - SelfOrderSystem - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
