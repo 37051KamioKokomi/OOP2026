@@ -1,170 +1,283 @@
-﻿.staff-order-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+﻿/* =====================================
+   STAFF DASHBOARD
+   ICE MINT CAFE THEME
+===================================== */
+
+.staff-page {
+    --mint-bg: #EAF5EF;
+    --mint-light: #DCEFE5;
+    --mint: #B8DCCB;
+    --mint-dark: #91BDA8;
+    --green: #486B58;
+    --text: #344B40;
+    --white: #FFFEFA;
+    background: linear-gradient( 135deg, #EAF5EF, #F5FAF6 );
+    color: var(--text);
+    padding: 35px;
+    border-radius: 24px;
 }
 
+/* ヘッダー */
+
+.staff-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+    .staff-header h1 {
+        color: var(--green);
+        font-weight: 600;
+        letter-spacing: .12em;
+    }
+
+    .staff-header > div > p:last-child {
+        color: #789283;
+    }
+
+.staff-eyebrow {
+    color: var(--mint-dark);
+    font-weight: 700;
+    letter-spacing: .2em;
+}
+
+.staff-header-label {
+    color: var(--green);
+    font-weight: 700;
+    letter-spacing: .15em;
+}
+
+/* 注文数の集計 */
+
+.staff-summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.staff-summary-box {
+    background: var(--white);
+    border: 1px solid #DCEAE1;
+    border-radius: 22px;
+    padding: 28px 32px;
+    box-shadow: 0 8px 25px rgba(72,107,88,.05);
+}
+
+    .staff-summary-box span {
+        color: #789283;
+        font-size: 1.1rem;
+    }
+
+    .staff-summary-box strong {
+        display: block;
+        color: var(--green);
+        font-size: 2.8rem;
+        margin-top: 8px;
+    }
+
+/* 注文一覧 */
+
+.staff-order-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+}
+
+/* 注文カード */
+
 .staff-order-card {
-    background: #ffffff;
-    border-radius: 16px;
-    padding: 15px;
-    box-shadow: 0 6px 18px rgba(0,0,0,.08);
-    width: 100%;
-    transition: .2s;
+    background: var(--white);
+    border: 1px solid #DCEAE1;
+    border-radius: 24px;
+    padding: 32px;
+    box-shadow: 0 10px 30px rgba(72,107,88,.07);
+    transition: .3s;
 }
 
     .staff-order-card:hover {
-        transform: translateY(-3px);
+        transform: translateY(-4px);
+        box-shadow: 0 16px 35px rgba(72,107,88,.12);
     }
+
+/* 卓番号・注文情報 */
 
 .staff-order-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 12px;
+    gap: 15px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #E1EDE5;
 }
 
 .staff-order-identity {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 18px;
 }
 
 .staff-table-number {
-    background: linear-gradient(135deg,#2563eb,#60a5fa);
-    color: white;
-    border-radius: 10px;
-    padding: 8px 12px;
+    background: #B8DCCB;
+    color: #344B40;
+    padding: 18px 22px;
+    border-radius: 15px;
+    font-size: 1.4rem;
     font-weight: 700;
 }
 
 .staff-order-id {
-    font-size: 1rem;
+    color: var(--green);
+    font-size: 1.5rem;
     font-weight: 700;
 }
 
 .staff-order-time {
-    display: block;
-    color: #64748b;
-    font-size: .8rem;
+    color: #8CA397;
 }
 
-.staff-toggle-button {
-    background: #2563eb;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    padding: 8px 14px;
+/* ステータス */
+
+.staff-status {
+    padding: 10px 20px;
+    border-radius: 30px;
     font-weight: 700;
-    cursor: pointer;
 }
 
-    .staff-toggle-button:hover {
-        background: #1d4ed8;
-    }
-
-.staff-order-details {
-    display: none;
-    margin-top: 15px;
+.staff-status-new {
+    background: #E0F2E8;
+    color: #4E8769;
 }
 
-    .staff-order-details.open {
-        display: block;
-    }
+.staff-status-cooking {
+    background: #E4F0E9;
+    color: #557D65;
+}
+
+.staff-status-served {
+    background: #CDEBDD;
+    color: #347653;
+}
+
+/* 商品一覧 */
 
 .staff-order-items {
-    background: #f8fafc;
-    border-radius: 10px;
-    padding: 10px;
+    padding: 25px 0;
+    border-bottom: 1px solid #E1EDE5;
 }
 
 .staff-order-item {
     display: flex;
     justify-content: space-between;
-    padding: 8px 0;
-    border-bottom: 1px solid #e5e7eb;
+    align-items: center;
+    padding: 12px 0;
+    color: var(--text);
+    font-size: 1.15rem;
 }
 
-    .staff-order-item:last-child {
-        border-bottom: none;
+    .staff-order-item strong {
+        color: var(--green);
     }
 
+/* 合計金額 */
+
 .staff-order-bottom {
-    margin-top: 12px;
-    border-top: 1px solid #e5e7eb;
-    padding-top: 12px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 15px;
+    padding-top: 25px;
 }
 
 .staff-total span {
     display: block;
-    color: #64748b;
-    font-size: .8rem;
+    color: #8CA397;
 }
 
 .staff-total strong {
-    font-size: 1.5rem;
-    color: #dc2626;
+    color: var(--green);
+    font-size: 1.8rem;
 }
 
-.staff-status {
-    display: inline-block;
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-size: .8rem;
-    font-weight: 700;
-}
-
-.staff-status-new {
-    background: #dbeafe;
-    color: #1d4ed8;
-}
-
-.staff-status-cooking {
-    background: #fef3c7;
-    color: #b45309;
-}
-
-.staff-status-served {
-    background: #dcfce7;
-    color: #15803d;
-}
+/* 操作ボタン */
 
 .staff-action-button {
-    background: linear-gradient(135deg,#22c55e,#16a34a);
+    background: #91BDA8;
     color: white;
     border: none;
-    border-radius: 10px;
-    padding: 8px 16px;
+    border-radius: 13px;
+    padding: 13px 25px;
     font-weight: 700;
+    transition: .3s;
 }
 
     .staff-action-button:hover {
-        background: linear-gradient(135deg,#16a34a,#15803d);
+        background: #729F88;
+        color: white;
+        transform: translateY(-2px);
     }
 
+/* 完了表示 */
+
 .staff-completed {
-    color: #16a34a;
+    color: #4D9970;
     font-weight: 700;
+    font-size: 1.2rem;
 }
 
-@media (max-width: 600px) {
+/* 注文なし */
 
-    .staff-order-top {
+.staff-empty {
+    background: var(--white);
+    border: 1px solid #DCEAE1;
+    border-radius: 24px;
+    padding: 60px 25px;
+    text-align: center;
+}
+
+    .staff-empty h2 {
+        color: var(--green);
+    }
+
+    .staff-empty p {
+        color: #8CA397;
+    }
+
+/* スマホ対応 */
+
+@media (max-width: 768px) {
+
+    .staff-page {
+        padding: 18px;
+    }
+
+    .staff-header {
         flex-direction: column;
         align-items: flex-start;
     }
 
-    .staff-action-button,
-    .staff-toggle-button {
-        width: 100%;
+    .staff-header-label {
+        display: none;
+    }
+
+    .staff-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .staff-order-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .staff-order-card {
+        padding: 20px;
+    }
+
+    .staff-order-top {
+        flex-wrap: wrap;
     }
 
     .staff-order-bottom {
-        flex-direction: column;
-        gap: 10px;
-        align-items: stretch;
+        flex-wrap: wrap;
     }
 }
