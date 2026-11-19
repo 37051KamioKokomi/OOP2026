@@ -88,7 +88,11 @@ public class OrderService : IOrderService   // IOrderServiceで定義した処�
 
         try {
             // 店舗画面へ更新の合図を送る 
+            // 変更前：全接続に通知
             await _hubContext.Clients.All.SendAsync("OrdersChanged");
+            // 変更後：スタッフグループだけに通知
+            await _hubContext.Clients.Group("staff")
+            .SendAsync("OrdersChanged");
         } catch(Exception ex) {
             // 通知失敗でも保存済みの注文は成功として扱う 
             _logger.LogWarning(ex, "注文一覧への通知に失敗");
