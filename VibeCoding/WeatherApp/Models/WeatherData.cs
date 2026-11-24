@@ -7,17 +7,27 @@ using System.Text.Json.Serialization;
 
 
 namespace WeatherApp.Models;
+// 現在の天気
 public class WeatherData {
-
-    [JsonPropertyName("temperature_2m")]
     public double Temperature { get; set; }
 
-    [JsonPropertyName("relative_humidity_2m")]
     public int Humidity { get; set; }
 
-    [JsonPropertyName("weather_code")]
     public int WeatherCode { get; set; }
 
-    [JsonPropertyName("wind_speed_10m")]
     public double WindSpeed { get; set; }
+}
+
+// 1日分の天気予報
+public class DailyWeatherData {
+    public string Date { get; set; } = "";
+
+
+    public int WeatherCode { get; set; }
+
+    public double MaxTemperature { get; set; }
+
+    public double MinTemperature { get; set; }
+
+    public int PrecipitationProbability { get; set; }
 }
