@@ -25,6 +25,10 @@ public class DailyWeatherData {
 
     public int WeatherCode { get; set; }
 
+    public string WeatherDescription { get; set; } = "";
+
+    public string WeatherIcon { get; set; } = "";
+
     public double MaxTemperature { get; set; }
 
     public double MinTemperature { get; set; }
