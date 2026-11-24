@@ -14,18 +14,22 @@ public class WeatherService {
     private readonly HttpClient _httpClient = new HttpClient();
 
     // 東京の天気を取得する
-    public async Task<WeatherData?> GetWeatherAsync(double latitude, double longitude) {
+    public async Task<WeatherData?> GetWeatherAsync() {
+        //double latitude, double longitude
         string url =
                 "https://api.open-meteo.com/v1/forecast" +
-                $"?latitude={latitude}" +
-                $"&longitude={longitude}" +
+               "?latitude=35.6762" +
+"&longitude=139.6503" +
                 "&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m" +
                 "&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max" +
                 "&forecast_days=7" +
                 "&timezone=Asia/Tokyo";
 
-        // APIにリクエストを送る
-        var response = await _httpClient.GetAsync(url);
+        //$"?latitude={latitude}" +
+        //$"&longitude={longitude}" +
+
+                // APIにリクエストを送る
+                var response = await _httpClient.GetAsync(url);
 
         // 通信エラーを確認する
         response.EnsureSuccessStatusCode();
@@ -48,11 +52,12 @@ public class WeatherService {
     }
 
     // 7日間の天気予報を取得する
-    public async Task<List<DailyWeatherData>> GetWeeklyWeatherAsync(double latitude, double longitude) {
+    public async Task<List<DailyWeatherData>> GetWeeklyWeatherAsync() {
+        //double latitude, double longitude
         string url =
             "https://api.open-meteo.com/v1/forecast" +
-            $"?latitude={latitude}" +
-$"&longitude={longitude}" +
+             "?latitude=35.6762" +
+                "&longitude=139.6503" +
             "&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max" +
             "&forecast_days=7" +
             "&timezone=Asia/Tokyo";
